@@ -206,6 +206,10 @@ font-weight:bold;
 
 <h4>Riwayat Iuran</h4>
 
+<button class="btn btn-success mb-3" onclick="exportKas()">
+Download Laporan
+</button>
+
 <div class="table-responsive">
 
 <table class="table table-striped">
@@ -240,6 +244,8 @@ font-weight:bold;
 <script src="firebase.js"></script>
 <script src="app.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <script>
 
@@ -257,6 +263,12 @@ document.getElementById("loginBox").style.display="none"
 alert("Password salah")
 
 }
+
+}
+
+function exportKas(){
+
+alert("Fitur export laporan akan dibuat ke Excel")
 
 }
 
