@@ -2,6 +2,7 @@
 <html lang="id">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,93 +10,140 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
+<style>
+
+body{
+background:#f4f6fb;
+font-family:sans-serif;
+}
+
+header{
+background:#0f172a;
+color:white;
+padding:30px;
+text-align:center;
+}
+
+.card{
+border:none;
+border-radius:15px;
+}
+
+.card h3{
+font-weight:bold;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<header class="bg-dark text-white text-center py-4">
+<header>
+
 <h1>Kas Blok Depan Graha Alana</h1>
 <p>Blok A1 • A2 • A3 • B1 • B2 • B3</p>
+
 </header>
 
-<div id="loginBox" class="container mt-4">
-<div class="card p-4 shadow">
-<h3>Login Pengurus</h3>
+
+<div class="container mt-4">
+
+<div id="loginBox" class="card shadow p-4 mb-4">
+
+<h4>Login Pengurus</h4>
 
 <input id="adminPass" class="form-control mb-3" type="password" placeholder="Password pengurus">
 
 <button class="btn btn-primary" onclick="loginAdmin()">Login</button>
-</div>
+
 </div>
 
-<div class="container mt-4">
 
 <div class="row g-3">
 
 <div class="col-md-4">
-<div class="card text-center shadow">
-<div class="card-body">
+
+<div class="card shadow text-center p-3">
+
 <h5>Total Kas</h5>
-<h3 id="totalKas">Rp0</h3>
-</div>
-</div>
+
+<h2 id="totalKas">Rp0</h2>
+
 </div>
 
+</div>
+
+
 <div class="col-md-4">
-<div class="card text-center shadow">
-<div class="card-body">
+
+<div class="card shadow text-center p-3">
+
 <h5>Iuran Masuk</h5>
-<h3 id="totalIuran">Rp0</h3>
+
+<h2 id="totalIuran">Rp0</h2>
+
 </div>
+
 </div>
-</div>
+
 
 <div class="col-md-4">
-<div class="card text-center shadow">
-<div class="card-body">
+
+<div class="card shadow text-center p-3">
+
 <h5>Pengeluaran</h5>
-<h3 id="totalKeluar">Rp0</h3>
+
+<h2 id="totalKeluar">Rp0</h2>
+
 </div>
-</div>
+
 </div>
 
 </div>
 
-<div class="card mt-4 shadow">
-<div class="card-body">
-<h2>Grafik Kas</h2>
+
+<div class="card shadow mt-4 p-4">
+
+<h4>Grafik Kas</h4>
+
 <canvas id="chart"></canvas>
+
 </div>
-</div>
+
 
 <div id="adminPanel" style="display:none">
 
-<div class="card mt-4 shadow">
-<div class="card-body">
+<div class="row mt-4 g-3">
 
-<h2>Input Iuran</h2>
+<div class="col-md-6">
 
-<input class="form-control mb-2" id="nama" placeholder="Nama warga">
+<div class="card shadow p-4">
 
-<select class="form-control mb-2" id="blok">
+<h4>Input Iuran</h4>
+
+<input id="nama" class="form-control mb-2" placeholder="Nama warga">
+
+<select id="blok" class="form-control mb-2">
+
 <option>A1</option>
 <option>A2</option>
 <option>A3</option>
 <option>B1</option>
 <option>B2</option>
 <option>B3</option>
+
 </select>
 
-<input class="form-control mb-2" id="rumah" placeholder="Nomor rumah">
+<input id="rumah" class="form-control mb-2" placeholder="Nomor rumah">
 
-<select class="form-control mb-2" id="bulan">
+<select id="bulan" class="form-control mb-2">
+
 <option>Januari</option>
 <option>Februari</option>
 <option>Maret</option>
@@ -108,61 +156,73 @@
 <option>Oktober</option>
 <option>November</option>
 <option>Desember</option>
+
 </select>
 
-<input class="form-control mb-2" id="tahun" placeholder="Tahun (contoh 2026)">
+<input id="tahun" class="form-control mb-2" placeholder="Tahun (2026)">
 
-<input class="form-control mb-3" id="jumlah" placeholder="Jumlah iuran">
+<input id="jumlah" class="form-control mb-3" placeholder="Jumlah iuran">
 
-<button class="btn btn-success" onclick="tambahIuran()">Simpan Iuran</button>
+<button class="btn btn-success w-100" onclick="tambahIuran()">Simpan Iuran</button>
 
-</div>
-</div>
-
-<div class="card mt-4 shadow">
-<div class="card-body">
-
-<h2>Input Pengeluaran</h2>
-
-<input class="form-control mb-2" id="ket" placeholder="Keterangan">
-
-<input class="form-control mb-3" id="jumlahKeluar" placeholder="Jumlah pengeluaran">
-
-<button class="btn btn-danger" onclick="tambahPengeluaran()">Simpan</button>
-
-</div>
 </div>
 
 </div>
 
-<div class="card mt-4 shadow">
-<div class="card-body">
 
-<h2>Cek Iuran Rumah</h2>
+<div class="col-md-6">
 
-<input class="form-control mb-3" id="cek" placeholder="contoh A1-10" onkeyup="cekRumah()">
+<div class="card shadow p-4">
+
+<h4>Input Pengeluaran</h4>
+
+<input id="ket" class="form-control mb-2" placeholder="Keterangan">
+
+<input id="jumlahKeluar" class="form-control mb-3" placeholder="Jumlah pengeluaran">
+
+<button class="btn btn-danger w-100" onclick="tambahPengeluaran()">Simpan</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card shadow mt-4 p-4">
+
+<h4>Cek Iuran Rumah</h4>
+
+<input id="cek" class="form-control mb-3" placeholder="contoh A1-10" onkeyup="cekRumah()">
 
 <div id="hasil"></div>
 
 </div>
-</div>
 
-<div class="card mt-4 shadow">
-<div class="card-body">
 
-<h2>Riwayat Iuran</h2>
+<div class="card shadow mt-4 p-4">
 
-<table class="table table-bordered">
+<h4>Riwayat Iuran</h4>
+
+<div class="table-responsive">
+
+<table class="table table-striped">
 
 <thead>
+
 <tr>
+
 <th>Nama</th>
 <th>Blok</th>
 <th>Rumah</th>
 <th>Bulan</th>
 <th>Tahun</th>
 <th>Jumlah</th>
+
 </tr>
+
 </thead>
 
 <tbody id="tabelIuran"></tbody>
@@ -170,14 +230,16 @@
 </table>
 
 </div>
-</div>
 
 </div>
+
+
+</div>
+
 
 <script src="firebase.js"></script>
 <script src="app.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 
@@ -199,6 +261,7 @@ alert("Password salah")
 }
 
 </script>
+
 
 </body>
 </html>
