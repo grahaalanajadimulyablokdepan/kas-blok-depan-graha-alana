@@ -73,3 +73,20 @@ document.getElementById('hasil').innerHTML=html||'Belum ada pembayaran'
 }
 
 loadData()
+
+function loginAdmin(){
+
+let pass = document.getElementById("adminPass").value
+
+if(pass === "blokdepan123"){
+
+document.getElementById("adminPanel").style.display="block"
+document.getElementById("loginBox").style.display="none"
+
+}else{
+
+alert("Password salah")
+
+}
+
+}
