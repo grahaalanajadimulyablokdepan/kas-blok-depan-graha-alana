@@ -90,3 +90,45 @@ alert("Password salah")
 }
 
 }
+
+
+function cekStatusRumah(){
+
+let bulan = document.getElementById("bulan").value
+let tahun = document.getElementById("tahun").value
+
+db.collection("iuran")
+.where("bulan","==",bulan)
+.where("tahun","==",tahun)
+.get()
+.then(snapshot=>{
+
+let rumahBayar=[]
+
+snapshot.forEach(doc=>{
+rumahBayar.push(doc.data().blok+"-"+doc.data().rumah)
+})
+
+let html=""
+
+for(let i=1;i<=20;i++){
+
+let rumah="A1-"+i
+
+if(rumahBayar.includes(rumah)){
+
+html+="<p>"+rumah+" 🟢 Lunas</p>"
+
+}else{
+
+html+="<p>"+rumah+" 🔴 Belum bayar</p>"
+
+}
+
+}
+
+document.getElementById("hasil").innerHTML=html
+
+})
+
+}
