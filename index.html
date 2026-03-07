@@ -52,16 +52,13 @@ Blok A1 • A2 • A3 • B1 • B2 • B3
 
 
 
-<!-- SIDEBAR MENU -->
+<!-- SIDEBAR -->
 
 <div class="offcanvas offcanvas-start" id="menu">
 
 <div class="offcanvas-header">
-
 <h5>Menu</h5>
-
 <button class="btn-close" data-bs-dismiss="offcanvas"></button>
-
 </div>
 
 <div class="offcanvas-body">
@@ -85,12 +82,6 @@ Struktur Pengurus
 </li>
 
 <li class="list-group-item">
-<button class="btn w-100 text-start" data-bs-toggle="modal" data-bs-target="#modalDashboard">
-Dashboard Kas
-</button>
-</li>
-
-<li class="list-group-item">
 <button class="btn w-100 text-start" data-bs-toggle="modal" data-bs-target="#modalRiwayat">
 Riwayat Iuran
 </button>
@@ -106,15 +97,104 @@ Riwayat Iuran
 
 <div class="container mt-4">
 
-<!-- LOGIN -->
 
-<div id="loginBox" class="card p-4 shadow mb-4">
+<!-- LOGIN PENGURUS -->
+
+<div id="loginBox" class="card shadow p-4 mb-4">
 
 <h5>Login Pengurus</h5>
 
 <input id="adminPass" class="form-control mb-3" placeholder="Password">
 
-<button class="btn btn-primary w-100" onclick="loginAdmin()">Login</button>
+<button class="btn btn-primary w-100" onclick="loginAdmin()">
+Login
+</button>
+
+</div>
+
+
+
+<!-- PANEL ADMIN -->
+
+<div id="adminPanel" style="display:none">
+
+<div class="row g-3">
+
+<div class="col-md-6">
+
+<div class="card shadow p-4">
+
+<h5>Input Iuran</h5>
+
+<input id="nama" class="form-control mb-2" placeholder="Nama warga">
+
+<select id="blok" class="form-control mb-2">
+<option>A1</option>
+<option>A2</option>
+<option>A3</option>
+<option>B1</option>
+<option>B2</option>
+<option>B3</option>
+</select>
+
+<input id="rumah" class="form-control mb-2" placeholder="Nomor rumah">
+
+<select id="bulan" class="form-control mb-2">
+
+<option>Januari</option>
+<option>Februari</option>
+<option>Maret</option>
+<option>April</option>
+<option>Mei</option>
+<option>Juni</option>
+<option>Juli</option>
+<option>Agustus</option>
+<option>September</option>
+<option>Oktober</option>
+<option>November</option>
+<option>Desember</option>
+
+</select>
+
+<select id="tahun" class="form-control mb-2">
+
+<option>2025</option>
+<option selected>2026</option>
+<option>2027</option>
+
+</select>
+
+<input id="jumlah" class="form-control mb-3" placeholder="Jumlah iuran">
+
+<button class="btn btn-success w-100" onclick="tambahIuran()">
+Simpan Iuran
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-6">
+
+<div class="card shadow p-4">
+
+<h5>Input Pengeluaran</h5>
+
+<input id="ket" class="form-control mb-2" placeholder="Keterangan">
+
+<input id="jumlahKeluar" class="form-control mb-3" placeholder="Jumlah">
+
+<button class="btn btn-danger w-100" onclick="tambahPengeluaran()">
+Simpan Pengeluaran
+</button>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
@@ -122,31 +202,39 @@ Riwayat Iuran
 
 <!-- DASHBOARD -->
 
-<div class="row g-3">
+<div class="row g-3 mt-3">
 
 <div class="col-md-4">
 
 <div class="card text-center shadow p-3">
+
 <h6>Total Kas</h6>
 <h2 id="totalKas">Rp0</h2>
+
 </div>
 
 </div>
+
 
 <div class="col-md-4">
 
 <div class="card text-center shadow p-3">
+
 <h6>Iuran Masuk</h6>
 <h2 id="totalIuran">Rp0</h2>
+
 </div>
 
 </div>
+
 
 <div class="col-md-4">
 
 <div class="card text-center shadow p-3">
+
 <h6>Pengeluaran</h6>
 <h2 id="totalKeluar">Rp0</h2>
+
 </div>
 
 </div>
@@ -159,7 +247,8 @@ Riwayat Iuran
 
 <div class="card shadow mt-4 p-4">
 
-<h5>Grafik Kas Bulanan</h5>
+<h5>Grafik Kas</h5>
+
 <canvas id="chart"></canvas>
 
 </div>
@@ -170,14 +259,15 @@ Riwayat Iuran
 
 <div class="card shadow mt-4 p-4">
 
-<h5>Peta Rumah Perumahan</h5>
+<h5>Peta Rumah</h5>
+
 <div id="mapPerumahan"></div>
 
 </div>
 
 
 
-<!-- CEK IURAN -->
+<!-- CEK IURAN WARGA -->
 
 <div class="card shadow mt-4 p-4">
 
@@ -190,6 +280,8 @@ Pilih Rumah
 <div id="hasil" class="mt-3"></div>
 
 </div>
+
+
 
 </div>
 
@@ -204,11 +296,8 @@ Pilih Rumah
 <div class="modal-content">
 
 <div class="modal-header">
-
 <h5>Pilih Rumah</h5>
-
 <button class="btn-close" data-bs-dismiss="modal"></button>
-
 </div>
 
 <div class="modal-body">
@@ -255,8 +344,8 @@ Pilih Rumah
 
 <div class="modal-body">
 
-Selamat datang di sistem kas digital Graha Alana.  
-Website ini dibuat untuk transparansi pengelolaan kas warga dan mempermudah pengecekan pembayaran iuran.
+Selamat datang di sistem kas digital Graha Alana.
+Website ini dibuat untuk transparansi pengelolaan kas warga.
 
 </div>
 
@@ -284,41 +373,13 @@ Website ini dibuat untuk transparansi pengelolaan kas warga dan mempermudah peng
 <div class="modal-body">
 
 <ul>
+
 <li>Ketua</li>
 <li>Sekretaris</li>
 <li>Bendahara</li>
 <li>Koordinator Lapangan</li>
-<li>Pengurus Blok</li>
+
 </ul>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- MODAL DASHBOARD -->
-
-<div class="modal fade" id="modalDashboard">
-
-<div class="modal-dialog">
-
-<div class="modal-content">
-
-<div class="modal-header">
-<h5>Dashboard Kas</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body">
-
-Total Kas : <span id="totalKasPopup">Rp0</span><br>
-Iuran Masuk : <span id="totalIuranPopup">Rp0</span><br>
-Pengeluaran : <span id="totalKeluarPopup">Rp0</span>
 
 </div>
 
@@ -360,7 +421,7 @@ Pengeluaran : <span id="totalKeluarPopup">Rp0</span>
 
 </thead>
 
-<tbody id="tabelIuranPopup"></tbody>
+<tbody id="tabelIuran"></tbody>
 
 </table>
 
