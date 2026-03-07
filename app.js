@@ -55,10 +55,14 @@ loadData()
 
 }
 
+
+
 function loadData(){
 
 let totalIuran=0
 let totalKeluar=0
+
+let rumahBayar=[]
 
 db.collection("iuran").get().then(s=>{
 
@@ -69,6 +73,8 @@ s.forEach(doc=>{
 let d=doc.data()
 
 totalIuran+=d.jumlah
+
+rumahBayar.push(d.blok+"-"+d.rumah)
 
 html+=`
 
@@ -89,23 +95,87 @@ document.getElementById("tabelIuran").innerHTML=html
 
 document.getElementById("totalIuran").innerText=rupiah(totalIuran)
 
+document.getElementById("detailTotalIuran").innerText=rupiah(totalIuran)
+document.getElementById("detailTotalIuran2").innerText=rupiah(totalIuran)
+
+
+
 db.collection("pengeluaran").get().then(p=>{
+
+let htmlKeluar=""
 
 p.forEach(doc=>{
 
-totalKeluar+=doc.data().jumlah
+let d=doc.data()
+
+totalKeluar+=d.jumlah
+
+htmlKeluar+=`
+
+<tr>
+
+<td>${d.ket}</td>
+<td>${rupiah(d.jumlah)}</td>
+
+</tr>
+
+`
 
 })
 
+document.getElementById("tabelPengeluaran").innerHTML=htmlKeluar
+
 document.getElementById("totalKeluar").innerText=rupiah(totalKeluar)
 
-document.getElementById("totalKas").innerText=rupiah(totalIuran-totalKeluar)
+document.getElementById("detailTotalKeluar").innerText=rupiah(totalKeluar)
+document.getElementById("detailTotalKeluar2").innerText=rupiah(totalKeluar)
+
+
+
+let kas=totalIuran-totalKeluar
+
+document.getElementById("totalKas").innerText=rupiah(kas)
+document.getElementById("detailTotalKas").innerText=rupiah(kas)
+
+
+
+updateMap(rumahBayar)
+
+generateBelumBayar(rumahBayar)
 
 })
 
 })
 
 }
+
+
+
+function generateBelumBayar(rumahBayar){
+
+let html=""
+
+for(let blok in blokData){
+
+for(let i=1;i<=blokData[blok];i++){
+
+let kode=blok+"-"+i
+
+if(!rumahBayar.includes(kode)){
+
+html+=`<div>${kode}</div>`
+
+}
+
+}
+
+}
+
+document.getElementById("rumahBelumBayar").innerHTML=html
+
+}
+
+
 
 function exportExcel(){
 
@@ -117,6 +187,8 @@ XLSX.writeFile(wb,"laporan-kas.xlsx")
 
 }
 
+
+
 const blokData={
 
 "A1":20,
@@ -127,6 +199,8 @@ const blokData={
 "B3":20
 
 }
+
+
 
 function generateMap(){
 
@@ -142,7 +216,7 @@ html+=`<div class="blok">
 
 for(let i=1;i<=blokData[blok];i++){
 
-html+=`<div class="rumah belum">${blok}-${i}</div>`
+html+=`<div id="${blok}-${i}" class="rumah belum">${blok}-${i}</div>`
 
 }
 
@@ -154,5 +228,28 @@ document.getElementById("mapPerumahan").innerHTML=html
 
 }
 
-loadData()
+
+
+function updateMap(rumahBayar){
+
+rumahBayar.forEach(r=>{
+
+let el=document.getElementById(r)
+
+if(el){
+
+el.classList.remove("belum")
+
+el.classList.add("lunas")
+
+}
+
+})
+
+}
+
+
+
 generateMap()
+
+loadData()
