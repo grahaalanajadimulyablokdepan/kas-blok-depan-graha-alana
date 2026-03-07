@@ -1,5 +1,3 @@
-/* PASSWORD LOGIN */
-
 const passwords=[
 "ketua123",
 "sekretaris123",
@@ -26,18 +24,9 @@ alert("Password salah")
 
 }
 
-
-/* FORMAT RUPIAH */
-
 function rupiah(n){
-
 return "Rp"+n.toLocaleString("id-ID")
-
 }
-
-
-
-/* TAMBAH IURAN */
 
 function tambahIuran(){
 
@@ -47,28 +36,6 @@ let rumah=document.getElementById("rumah").value
 let bulan=document.getElementById("bulan").value
 let tahun=document.getElementById("tahun").value
 let jumlah=document.getElementById("jumlah").value
-
-if(!nama||!rumah||!jumlah){
-
-alert("Data belum lengkap")
-return
-
-}
-
-db.collection("iuran")
-.where("blok","==",blok)
-.where("rumah","==",rumah)
-.where("bulan","==",bulan)
-.where("tahun","==",tahun)
-.get()
-.then(snapshot=>{
-
-if(!snapshot.empty){
-
-alert("Rumah ini sudah membayar bulan tersebut")
-return
-
-}
 
 db.collection("iuran").add({
 
@@ -87,25 +54,12 @@ loadIuran()
 loadDashboard()
 updateMap()
 
-})
-
 }
-
-
-
-/* TAMBAH PENGELUARAN */
 
 function tambahPengeluaran(){
 
 let ket=document.getElementById("ket").value
 let jumlah=document.getElementById("jumlahKeluar").value
-
-if(!ket||!jumlah){
-
-alert("Data belum lengkap")
-return
-
-}
 
 db.collection("pengeluaran").add({
 
@@ -119,10 +73,6 @@ alert("Pengeluaran berhasil disimpan")
 loadDashboard()
 
 }
-
-
-
-/* LOAD RIWAYAT */
 
 function loadIuran(){
 
@@ -153,10 +103,6 @@ document.getElementById("tabelIuran").innerHTML=html
 
 }
 
-
-
-/* DASHBOARD */
-
 function loadDashboard(){
 
 let totalIuran=0
@@ -165,9 +111,7 @@ let totalKeluar=0
 db.collection("iuran").get().then(snapshot=>{
 
 snapshot.forEach(doc=>{
-
 totalIuran+=doc.data().jumlah
-
 })
 
 document.getElementById("totalIuran").innerText=rupiah(totalIuran)
@@ -175,9 +119,7 @@ document.getElementById("totalIuran").innerText=rupiah(totalIuran)
 db.collection("pengeluaran").get().then(snapshot=>{
 
 snapshot.forEach(doc=>{
-
 totalKeluar+=doc.data().jumlah
-
 })
 
 document.getElementById("totalKeluar").innerText=rupiah(totalKeluar)
@@ -192,10 +134,6 @@ document.getElementById("totalKas").innerText=rupiah(kas)
 
 }
 
-
-
-/* EXPORT EXCEL */
-
 function exportExcel(){
 
 let table=document.querySelector("table")
@@ -206,10 +144,6 @@ XLSX.writeFile(wb,"laporan-kas.xlsx")
 
 }
 
-
-
-/* DATA BLOK RUMAH */
-
 const blokData={
 "A1":20,
 "A2":24,
@@ -218,10 +152,6 @@ const blokData={
 "B2":20,
 "B3":20
 }
-
-
-
-/* GENERATE MAP */
 
 function generateMap(){
 
@@ -238,7 +168,7 @@ html+=`
 for(let i=1;i<=blokData[blok];i++){
 
 html+=`
-<div class="rumah belum" id="${blok}-${i}" onclick="cekStatus('${blok}','${i}')">
+<div class="rumah belum" id="${blok}-${i}">
 
 ${blok}-${i}
 
@@ -259,10 +189,6 @@ document.getElementById("mapPerumahan").innerHTML=html
 updateMap()
 
 }
-
-
-
-/* UPDATE STATUS RUMAH */
 
 function updateMap(){
 
@@ -288,36 +214,6 @@ el.classList.add("lunas")
 })
 
 }
-
-
-
-/* CEK STATUS RUMAH */
-
-function cekStatus(blok,rumah){
-
-db.collection("iuran")
-.where("blok","==",blok)
-.where("rumah","==",rumah)
-.get()
-.then(snapshot=>{
-
-if(snapshot.empty){
-
-alert("Rumah "+blok+"-"+rumah+" BELUM bayar")
-
-}else{
-
-alert("Rumah "+blok+"-"+rumah+" SUDAH bayar")
-
-}
-
-})
-
-}
-
-
-
-/* LOAD SAAT WEB DIBUKA */
 
 loadDashboard()
 loadIuran()
