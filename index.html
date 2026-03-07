@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Sistem Kas RT • Graha Alana</title>
+<title>Sistem Kas Lingkungan • Graha Alana</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -57,14 +57,13 @@ data-bs-target="#menu">
 </nav>
 
 
-
 <!-- SIDE MENU -->
 
 <div class="offcanvas offcanvas-end" id="menu">
 
 <div class="offcanvas-header">
 
-<h5>Menu Perumahan Graha Alana</h5>
+<h5>Menu Graha Alana</h5>
 
 <button class="btn-close" data-bs-dismiss="offcanvas"></button>
 
@@ -72,54 +71,62 @@ data-bs-target="#menu">
 
 <div class="offcanvas-body">
 
-<div class="list-group">
+<div class="d-grid gap-3">
 
-<button class="list-group-item list-group-item-action"
+<button class="btn btn-primary"
 data-bs-toggle="modal"
 data-bs-target="#modalTentang">
-Tentang Perumahan
+
+🏡 Tentang Perumahan
+
 </button>
 
-<button class="list-group-item list-group-item-action"
+<button class="btn btn-success"
 data-bs-toggle="modal"
 data-bs-target="#modalVisi">
-Visi & Misi Lingkungan
+
+🌿 Visi & Misi Lingkungan
+
 </button>
 
-<button class="list-group-item list-group-item-action"
+<button class="btn btn-info text-white"
 data-bs-toggle="modal"
 data-bs-target="#modalFasilitas">
-Fasilitas Lingkungan
+
+🏞 Fasilitas Lingkungan
+
 </button>
 
-<button class="list-group-item list-group-item-action"
+<button class="btn btn-warning"
 data-bs-toggle="modal"
 data-bs-target="#modalKeamanan">
-Sistem Keamanan
+
+🔐 Sistem Keamanan
+
 </button>
 
-<button class="list-group-item list-group-item-action"
+<button class="btn btn-secondary"
 data-bs-toggle="modal"
 data-bs-target="#modalPeraturan">
-Peraturan Warga
+
+📜 Peraturan Warga
+
 </button>
 
-<button class="list-group-item list-group-item-action"
+<button class="btn btn-dark"
 data-bs-toggle="modal"
 data-bs-target="#modalPengumuman">
-Pengumuman
+
+📢 Pengumuman
+
 </button>
 
-<button class="list-group-item list-group-item-action"
+<button class="btn btn-danger"
 data-bs-toggle="modal"
 data-bs-target="#modalKontak">
-Kontak Pengurus
-</button>
 
-<button class="list-group-item list-group-item-action"
-data-bs-toggle="modal"
-data-bs-target="#modalDarurat">
-Kontak Darurat
+☎ Kontak Pengurus
+
 </button>
 
 </div>
@@ -127,7 +134,6 @@ Kontak Darurat
 </div>
 
 </div>
-
 
 
 <div class="container mt-4">
@@ -148,7 +154,6 @@ Login
 </div>
 
 
-
 <!-- ADMIN PANEL -->
 
 <div id="adminPanel" style="display:none">
@@ -164,12 +169,14 @@ Login
 <input id="nama" class="form-control mb-2" placeholder="Nama">
 
 <select id="blok" class="form-control mb-2">
+
 <option>A1</option>
 <option>A2</option>
 <option>A3</option>
 <option>B1</option>
 <option>B2</option>
 <option>B3</option>
+
 </select>
 
 <input id="rumah" class="form-control mb-2" placeholder="No Rumah">
@@ -177,13 +184,14 @@ Login
 <input id="jumlah" class="form-control mb-2" placeholder="Jumlah">
 
 <button class="btn btn-success w-100" onclick="tambahIuran()">
+
 Simpan
+
 </button>
 
 </div>
 
 </div>
-
 
 
 <div class="col-md-6">
@@ -197,7 +205,9 @@ Simpan
 <input id="jumlahKeluar" class="form-control mb-2" placeholder="Jumlah">
 
 <button class="btn btn-danger w-100" onclick="tambahPengeluaran()">
+
 Simpan
+
 </button>
 
 </div>
@@ -214,6 +224,7 @@ Simpan
 
 <div class="row mt-4 g-3">
 
+
 <div class="col-md-4">
 
 <div class="dashboard-card kas" data-bs-toggle="modal" data-bs-target="#modalKas">
@@ -222,7 +233,7 @@ Simpan
 
 <h2 id="totalKas">Rp0</h2>
 
-<small>Klik untuk melihat detail laporan kas</small>
+<small>klik untuk melihat rincian kas</small>
 
 </div>
 
@@ -237,7 +248,7 @@ Simpan
 
 <h2 id="totalIuran">Rp0</h2>
 
-<small>Klik untuk melihat rincian pemasukan</small>
+<small>klik untuk melihat detail iuran</small>
 
 </div>
 
@@ -252,11 +263,12 @@ Simpan
 
 <h2 id="totalKeluar">Rp0</h2>
 
-<small>Klik untuk melihat rincian penggunaan dana</small>
+<small>klik untuk melihat detail pengeluaran</small>
 
 </div>
 
 </div>
+
 
 </div>
 
@@ -321,7 +333,7 @@ Download Excel
 
 <div class="modal-header">
 
-<h5>Informasi Total Kas Lingkungan</h5>
+<h5>Rincian Kas Lingkungan</h5>
 
 <button class="btn-close" data-bs-dismiss="modal"></button>
 
@@ -329,27 +341,19 @@ Download Excel
 
 <div class="modal-body">
 
-<p>
-Total kas merupakan akumulasi seluruh dana yang telah dibayarkan oleh warga
-melalui iuran bulanan lingkungan.
-</p>
+<p><b>Total Iuran Masuk :</b> <span id="detailTotalIuran">Rp0</span></p>
+
+<p><b>Total Pengeluaran :</b> <span id="detailTotalKeluar">Rp0</span></p>
+
+<hr>
+
+<p><b>Total Kas Saat Ini :</b> <span id="detailTotalKas">Rp0</span></p>
 
 <p>
-Dana kas ini digunakan untuk mendukung berbagai kegiatan dan kebutuhan
-operasional lingkungan seperti:
-</p>
 
-<ul>
-<li>Perawatan fasilitas lingkungan</li>
-<li>Pembayaran keamanan</li>
-<li>Kegiatan sosial warga</li>
-<li>Pemeliharaan kebersihan</li>
-<li>Perbaikan infrastruktur lingkungan</li>
-</ul>
+Total kas merupakan saldo akhir setelah seluruh iuran warga
+dikurangi pengeluaran operasional lingkungan.
 
-<p>
-Saldo kas akan selalu diperbarui secara otomatis berdasarkan
-data iuran masuk dan pengeluaran yang tercatat dalam sistem.
 </p>
 
 </div>
@@ -366,13 +370,13 @@ data iuran masuk dan pengeluaran yang tercatat dalam sistem.
 
 <div class="modal fade" id="modalIuran">
 
-<div class="modal-dialog">
+<div class="modal-dialog modal-lg">
 
 <div class="modal-content">
 
 <div class="modal-header">
 
-<h5>Informasi Iuran Warga</h5>
+<h5>Detail Iuran Warga</h5>
 
 <button class="btn-close" data-bs-dismiss="modal"></button>
 
@@ -380,26 +384,17 @@ data iuran masuk dan pengeluaran yang tercatat dalam sistem.
 
 <div class="modal-body">
 
-<p>
-Iuran warga merupakan kontribusi rutin dari setiap rumah
-untuk mendukung pengelolaan dan operasional lingkungan.
-</p>
+<p><b>Total Iuran Terkumpul :</b> <span id="detailTotalIuran2">Rp0</span></p>
 
-<p>
-Dana yang terkumpul dari iuran digunakan untuk:
-</p>
+<hr>
 
-<ul>
-<li>Keamanan lingkungan</li>
-<li>Kebersihan dan pengangkutan sampah</li>
-<li>Perawatan jalan dan fasilitas umum</li>
-<li>Kegiatan sosial dan kemasyarakatan</li>
-</ul>
+<h6>Rumah Belum Bayar</h6>
 
-<p>
-Setiap pembayaran iuran yang masuk akan langsung tercatat
-dalam sistem kas RT secara transparan.
-</p>
+<div id="rumahBelumBayar">
+
+Belum ada data
+
+</div>
 
 </div>
 
@@ -415,13 +410,13 @@ dalam sistem kas RT secara transparan.
 
 <div class="modal fade" id="modalKeluar">
 
-<div class="modal-dialog">
+<div class="modal-dialog modal-lg">
 
 <div class="modal-content">
 
 <div class="modal-header">
 
-<h5>Informasi Penggunaan Dana Kas</h5>
+<h5>Detail Pengeluaran Kas</h5>
 
 <button class="btn-close" data-bs-dismiss="modal"></button>
 
@@ -429,179 +424,37 @@ dalam sistem kas RT secara transparan.
 
 <div class="modal-body">
 
-<p>
-Pengeluaran kas merupakan penggunaan dana lingkungan
-yang dilakukan untuk kepentingan bersama warga.
-</p>
+<table class="table">
 
-<p>
-Beberapa contoh penggunaan dana kas antara lain:
-</p>
+<thead>
 
-<ul>
-<li>Pembayaran petugas keamanan</li>
-<li>Pembelian perlengkapan kebersihan</li>
-<li>Perbaikan lampu jalan</li>
-<li>Perawatan taman lingkungan</li>
-<li>Kegiatan sosial warga</li>
-</ul>
+<tr>
 
-<p>
-Seluruh pengeluaran dicatat secara transparan
-dan dapat dipantau oleh warga melalui sistem ini.
-</p>
+<th>Keterangan</th>
+<th>Jumlah</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tabelPengeluaran"></tbody>
+
+</table>
+
+<hr>
+
+<h5>Total Pengeluaran :
+
+<span id="detailTotalKeluar2">Rp0</span>
+
+</h5>
+
+</div>
 
 </div>
 
 </div>
 
-</div>
-
-</div>
-
-
-
-<!-- MODAL TENTANG -->
-
-<div class="modal fade" id="modalTentang">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h5>Tentang Graha Alana</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-<div class="modal-body">
-Graha Alana merupakan lingkungan hunian yang dirancang
-untuk memberikan kenyamanan, keamanan, dan kualitas hidup
-yang baik bagi seluruh warga.
-</div>
-</div>
-</div>
-</div>
-
-
-
-<!-- MODAL VISI -->
-
-<div class="modal fade" id="modalVisi">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h5>Visi & Misi Lingkungan</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-<div class="modal-body">
-
-<b>Visi</b>
-
-Mewujudkan lingkungan perumahan yang aman,
-tertib, nyaman, dan harmonis.
-
-<br><br>
-
-<b>Misi</b>
-
-• Meningkatkan keamanan lingkungan  
-• Menjaga kebersihan dan keindahan kawasan  
-• Menguatkan hubungan sosial antar warga  
-
-</div>
-</div>
-</div>
-</div>
-
-
-
-<!-- MODAL FASILITAS -->
-
-<div class="modal fade" id="modalFasilitas">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h5>Fasilitas Lingkungan</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-<div class="modal-body">
-
-• Pos keamanan  
-• Area parkir bersama  
-• Taman lingkungan  
-• Jalan lingkungan yang tertata  
-• Sistem penerangan jalan  
-
-</div>
-</div>
-</div>
-</div>
-
-
-
-<!-- MODAL KEAMANAN -->
-
-<div class="modal fade" id="modalKeamanan">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h5>Sistem Keamanan</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-<div class="modal-body">
-
-Lingkungan Graha Alana memiliki sistem keamanan
-yang dikelola oleh warga dan petugas keamanan.
-
-Beberapa sistem keamanan yang diterapkan:
-
-• Pos jaga lingkungan  
-• Patroli malam  
-• Sistem pelaporan warga  
-
-</div>
-</div>
-</div>
-</div>
-
-
-
-<!-- MODAL PERATURAN -->
-
-<div class="modal fade" id="modalPeraturan">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h5>Peraturan Warga</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-<div class="modal-body">
-
-• Menjaga kebersihan lingkungan  
-• Tidak mengganggu kenyamanan warga  
-• Membayar iuran tepat waktu  
-• Menjaga keamanan bersama  
-
-</div>
-</div>
-</div>
-</div>
-
-
-
-<!-- MODAL PENGUMUMAN -->
-
-<div class="modal fade" id="modalPengumuman">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h5>Pengumuman</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-<div class="modal-body">
-
-Belum ada pengumuman terbaru dari pengurus.
-
-</div>
-</div>
-</div>
 </div>
 
 
@@ -609,43 +462,31 @@ Belum ada pengumuman terbaru dari pengurus.
 <!-- MODAL KONTAK -->
 
 <div class="modal fade" id="modalKontak">
+
 <div class="modal-dialog">
+
 <div class="modal-content">
+
 <div class="modal-header">
-<h5>Kontak Pengurus</h5>
+
+<h5>Kontak Pengurus Blok A & B</h5>
+
 <button class="btn-close" data-bs-dismiss="modal"></button>
+
 </div>
+
 <div class="modal-body">
 
-Ketua RT  
-Sekretaris  
-Bendahara  
+Koordinator Blok A  
+Sekretaris Lingkungan  
+Bendahara Kas Lingkungan  
 
 </div>
-</div>
-</div>
-</div>
-
-
-
-<!-- MODAL DARURAT -->
-
-<div class="modal fade" id="modalDarurat">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h5>Kontak Darurat</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-<div class="modal-body">
-
-Pemadam Kebakaran  
-Polisi  
-Ambulance  
 
 </div>
+
 </div>
-</div>
+
 </div>
 
 
