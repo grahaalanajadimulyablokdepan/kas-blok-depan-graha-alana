@@ -148,3 +148,21 @@ background:linear-gradient(135deg,#dc2626,#991b1b);
 opacity:0.8;
 font-size:13px;
 }
+
+.lunas{
+
+background:linear-gradient(135deg,#16a34a,#065f46);
+
+}
+
+.belum{
+
+background:linear-gradient(135deg,#dc2626,#7f1d1d);
+
+}
+
+.rumah{
+
+box-shadow:0 6px 12px rgba(0,0,0,0.15);
+
+}
