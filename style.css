@@ -55,48 +55,46 @@ padding:8px;
 border-radius:8px;
 text-align:center;
 }
+
 #mapPerumahan{
-display:flex;
-flex-direction:column;
-gap:25px;
+display:grid;
+gap:20px;
+margin-top:15px;
 }
 
 .blok{
 background:white;
-border-radius:12px;
 padding:15px;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
+border-radius:12px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
 .blok-title{
-font-weight:700;
+font-weight:bold;
 margin-bottom:10px;
 }
 
 .rumah-grid{
 display:grid;
-grid-template-columns:repeat(10,1fr);
+grid-template-columns:repeat(5,1fr);
 gap:8px;
 }
 
 .rumah{
 padding:10px;
-border-radius:8px;
+border-radius:6px;
 text-align:center;
-font-size:12px;
+font-size:13px;
 cursor:pointer;
-color:white;
-transition:0.2s;
-}
-
-.rumah:hover{
-transform:scale(1.05);
+font-weight:bold;
 }
 
 .lunas{
 background:#16a34a;
+color:white;
 }
 
 .belum{
 background:#dc2626;
+color:white;
 }
