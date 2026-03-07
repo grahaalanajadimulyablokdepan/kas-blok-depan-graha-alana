@@ -22,9 +22,17 @@
 <body>
 
 
+<!-- NAVBAR -->
+
 <nav class="navbar navbar-dark bg-dark">
 
 <div class="container">
+
+<button class="btn btn-outline-light me-3" data-bs-toggle="offcanvas" data-bs-target="#sideMenu">
+
+☰
+
+</button>
 
 <div class="d-flex align-items-center">
 
@@ -47,8 +55,59 @@ Blok A1 • A2 • A3 • B1 • B2 • B3
 </nav>
 
 
+
+<!-- SIDE MENU -->
+
+<div class="offcanvas offcanvas-start" id="sideMenu">
+
+<div class="offcanvas-header">
+
+<h5>Graha Alana</h5>
+
+<button class="btn-close" data-bs-dismiss="offcanvas"></button>
+
+</div>
+
+<div class="offcanvas-body">
+
+<div class="list-group">
+
+<button class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalTentang">
+Tentang Perumahan
+</button>
+
+<button class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalFasilitas">
+Fasilitas
+</button>
+
+<button class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalPengurus">
+Struktur Pengurus
+</button>
+
+<button class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalPeraturan">
+Peraturan Warga
+</button>
+
+<button class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalInfo">
+Informasi & Pengumuman
+</button>
+
+<button class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalKontak">
+Kontak Pengurus
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
 <div class="container mt-4">
 
+
+<!-- LOGIN -->
 
 <div id="loginBox" class="card p-4 shadow mb-4">
 
@@ -62,6 +121,9 @@ Login
 
 </div>
 
+
+
+<!-- PANEL ADMIN -->
 
 <div id="adminPanel" style="display:none">
 
@@ -118,6 +180,7 @@ Simpan Iuran
 </div>
 
 
+
 <div class="col-md-6">
 
 <div class="card shadow p-4">
@@ -141,18 +204,20 @@ Simpan Pengeluaran
 </div>
 
 
-<div class="row g-3 mt-3">
 
+<!-- DASHBOARD -->
+
+<div class="row g-3 mt-3">
 
 <div class="col-md-4">
 
-<div class="card text-center shadow p-3" onclick="showKas()" style="cursor:pointer">
+<div class="dashboard-card kas" onclick="showKas()">
 
 <h6>Total Kas</h6>
 
 <h2 id="totalKas">Rp0</h2>
 
-<small>Klik untuk detail</small>
+<span>klik untuk detail</span>
 
 </div>
 
@@ -161,13 +226,13 @@ Simpan Pengeluaran
 
 <div class="col-md-4">
 
-<div class="card text-center shadow p-3" onclick="showIuran()" style="cursor:pointer">
+<div class="dashboard-card iuran" onclick="showIuran()">
 
 <h6>Iuran Masuk</h6>
 
 <h2 id="totalIuran">Rp0</h2>
 
-<small>Klik untuk detail</small>
+<span>klik untuk detail</span>
 
 </div>
 
@@ -176,22 +241,23 @@ Simpan Pengeluaran
 
 <div class="col-md-4">
 
-<div class="card text-center shadow p-3" onclick="showKeluar()" style="cursor:pointer">
+<div class="dashboard-card keluar" onclick="showKeluar()">
 
 <h6>Pengeluaran</h6>
 
 <h2 id="totalKeluar">Rp0</h2>
 
-<small>Klik untuk detail</small>
+<span>klik untuk detail</span>
 
 </div>
 
 </div>
 
-
 </div>
 
 
+
+<!-- PETA -->
 
 <div class="card shadow mt-4 p-4">
 
@@ -202,6 +268,8 @@ Simpan Pengeluaran
 </div>
 
 
+
+<!-- RIWAYAT -->
 
 <div class="card shadow mt-4 p-4">
 
@@ -214,14 +282,18 @@ Download Excel
 <table class="table table-striped">
 
 <thead>
+
 <tr>
+
 <th>Nama</th>
 <th>Blok</th>
 <th>Rumah</th>
 <th>Bulan</th>
 <th>Tahun</th>
 <th>Jumlah</th>
+
 </tr>
+
 </thead>
 
 <tbody id="tabelIuran"></tbody>
@@ -230,14 +302,13 @@ Download Excel
 
 </div>
 
-
 </div>
 
 
 
-<!-- MODAL TOTAL KAS -->
+<!-- MODAL TENTANG -->
 
-<div class="modal fade" id="modalKas">
+<div class="modal fade" id="modalTentang">
 
 <div class="modal-dialog">
 
@@ -245,7 +316,7 @@ Download Excel
 
 <div class="modal-header">
 
-<h5>Detail Total Kas</h5>
+<h5>Tentang Graha Alana</h5>
 
 <button class="btn-close" data-bs-dismiss="modal"></button>
 
@@ -253,11 +324,7 @@ Download Excel
 
 <div class="modal-body">
 
-<p>Total Iuran : <span id="detailIuran"></span></p>
-
-<p>Total Pengeluaran : <span id="detailKeluar"></span></p>
-
-<p>Sisa Kas : <span id="detailKas"></span></p>
+Perumahan Graha Alana merupakan kawasan hunian yang nyaman, aman dan modern dengan lingkungan yang tertata rapi.
 
 </div>
 
@@ -269,58 +336,9 @@ Download Excel
 
 
 
-<!-- MODAL IURAN -->
+<!-- MODAL FASILITAS -->
 
-<div class="modal fade" id="modalIuran">
-
-<div class="modal-dialog modal-lg">
-
-<div class="modal-content">
-
-<div class="modal-header">
-
-<h5>Detail Iuran Masuk</h5>
-
-<button class="btn-close" data-bs-dismiss="modal"></button>
-
-</div>
-
-<div class="modal-body">
-
-<table class="table">
-
-<thead>
-
-<tr>
-
-<th>Nama</th>
-<th>Blok</th>
-<th>Rumah</th>
-<th>Bulan</th>
-<th>Tahun</th>
-<th>Jumlah</th>
-
-</tr>
-
-</thead>
-
-<tbody id="detailTabelIuran"></tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- MODAL PENGELUARAN -->
-
-<div class="modal fade" id="modalKeluar">
+<div class="modal fade" id="modalFasilitas">
 
 <div class="modal-dialog">
 
@@ -328,7 +346,7 @@ Download Excel
 
 <div class="modal-header">
 
-<h5>Detail Pengeluaran</h5>
+<h5>Fasilitas</h5>
 
 <button class="btn-close" data-bs-dismiss="modal"></button>
 
@@ -336,22 +354,137 @@ Download Excel
 
 <div class="modal-body">
 
-<table class="table">
+• Keamanan 24 Jam  
+• Area Parkir  
+• Jalan Lingkungan Lebar  
+• Ruang Terbuka Hijau  
 
-<thead>
+</div>
 
-<tr>
+</div>
 
-<th>Keterangan</th>
-<th>Jumlah</th>
+</div>
 
-</tr>
+</div>
 
-</thead>
 
-<tbody id="detailTabelKeluar"></tbody>
 
-</table>
+<!-- MODAL PENGURUS -->
+
+<div class="modal fade" id="modalPengurus">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5>Struktur Pengurus</h5>
+
+<button class="btn-close" data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body">
+
+Ketua  
+Sekretaris  
+Bendahara  
+Koordinator Lapangan  
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- MODAL PERATURAN -->
+
+<div class="modal fade" id="modalPeraturan">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5>Peraturan Warga</h5>
+
+<button class="btn-close" data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body">
+
+• Menjaga kebersihan lingkungan  
+• Menjaga keamanan bersama  
+• Membayar iuran tepat waktu  
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- MODAL INFO -->
+
+<div class="modal fade" id="modalInfo">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5>Informasi & Pengumuman</h5>
+
+<button class="btn-close" data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body">
+
+Belum ada pengumuman terbaru.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- MODAL KONTAK -->
+
+<div class="modal fade" id="modalKontak">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5>Kontak Pengurus</h5>
+
+<button class="btn-close" data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body">
+
+Ketua : 08xxxxxxxx  
+Sekretaris : 08xxxxxxxx  
+Bendahara : 08xxxxxxxx  
 
 </div>
 
