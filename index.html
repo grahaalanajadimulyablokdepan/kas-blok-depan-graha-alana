@@ -21,7 +21,7 @@
 
 </head>
 
-<body id="beranda">
+<body>
 
 <!-- NAVBAR -->
 
@@ -56,7 +56,8 @@ Blok A1 • A2 • A3 • B1 • B2 • B3
 </nav>
 
 
-<!-- SIDEMENU -->
+
+<!-- SIDEBAR MENU -->
 
 <div class="offcanvas offcanvas-start" id="menu">
 
@@ -73,23 +74,49 @@ Blok A1 • A2 • A3 • B1 • B2 • B3
 <ul class="list-group">
 
 <li class="list-group-item">
-<a href="#beranda" data-bs-dismiss="offcanvas">Beranda</a>
+
+<a href="#" onclick="location.reload()">Beranda</a>
+
 </li>
 
 <li class="list-group-item">
-<a href="#sambutan" data-bs-dismiss="offcanvas">Kata Sambutan</a>
+
+<a href="#" data-bs-toggle="modal" data-bs-target="#modalSambutan">
+
+Kata Sambutan
+
+</a>
+
 </li>
 
 <li class="list-group-item">
-<a href="#pengurus" data-bs-dismiss="offcanvas">Struktur Pengurus</a>
+
+<a href="#" data-bs-toggle="modal" data-bs-target="#modalPengurus">
+
+Struktur Pengurus
+
+</a>
+
 </li>
 
 <li class="list-group-item">
-<a href="#dashboard" data-bs-dismiss="offcanvas">Dashboard Kas</a>
+
+<a href="#" data-bs-toggle="modal" data-bs-target="#modalDashboard">
+
+Dashboard Kas
+
+</a>
+
 </li>
 
 <li class="list-group-item">
-<a href="#riwayat" data-bs-dismiss="offcanvas">Riwayat Iuran</a>
+
+<a href="#" data-bs-toggle="modal" data-bs-target="#modalRiwayat">
+
+Riwayat Iuran
+
+</a>
+
 </li>
 
 </ul>
@@ -99,8 +126,8 @@ Blok A1 • A2 • A3 • B1 • B2 • B3
 </div>
 
 
-<div class="container mt-4">
 
+<div class="container mt-4">
 
 <!-- LOGIN -->
 
@@ -116,49 +143,9 @@ Blok A1 • A2 • A3 • B1 • B2 • B3
 
 
 
-<!-- SAMBUTAN -->
+<!-- DASHBOARD KAS -->
 
-<div id="sambutan" class="card shadow mt-4 p-4">
-
-<h5>Kata Sambutan</h5>
-
-<p>
-
-Selamat datang di sistem kas digital Graha Alana.
-Website ini dibuat untuk mempermudah transparansi pengelolaan kas warga
-dan memudahkan warga dalam memantau pembayaran iuran.
-
-</p>
-
-</div>
-
-
-<!-- STRUKTUR -->
-
-<div id="pengurus" class="card shadow mt-4 p-4">
-
-<h5>Struktur Pengurus</h5>
-
-<ul>
-
-<li>Ketua</li>
-<li>Sekretaris</li>
-<li>Bendahara</li>
-<li>Koordinator Lapangan</li>
-<li>Pengurus Blok</li>
-
-</ul>
-
-</div>
-
-
-
-<!-- DASHBOARD -->
-
-<div id="dashboard">
-
-
-<div class="row g-3 mt-2">
+<div class="row g-3">
 
 <div class="col-md-4">
 
@@ -172,6 +159,7 @@ dan memudahkan warga dalam memantau pembayaran iuran.
 
 </div>
 
+
 <div class="col-md-4">
 
 <div class="card text-center shadow p-3">
@@ -183,6 +171,7 @@ dan memudahkan warga dalam memantau pembayaran iuran.
 </div>
 
 </div>
+
 
 <div class="col-md-4">
 
@@ -223,9 +212,6 @@ dan memudahkan warga dalam memantau pembayaran iuran.
 </div>
 
 
-</div>
-
-
 
 <!-- CEK IURAN -->
 
@@ -245,7 +231,11 @@ Pilih Rumah
 
 
 
-<!-- MODAL -->
+</div>
+
+
+
+<!-- MODAL CEK RUMAH -->
 
 <div class="modal fade" id="cekModal">
 
@@ -292,50 +282,162 @@ Pilih Rumah
 
 
 
-<!-- RIWAYAT -->
+<!-- POPUP SAMBUTAN -->
 
-<div id="riwayat" class="card shadow mt-4 p-4">
+<div class="modal fade" id="modalSambutan">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5>Kata Sambutan</h5>
+
+<button class="btn-close" data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body">
+
+Selamat datang di sistem kas digital Graha Alana.
+Website ini dibuat untuk transparansi pengelolaan
+kas lingkungan dan mempermudah warga memantau
+pembayaran iuran.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- POPUP STRUKTUR -->
+
+<div class="modal fade" id="modalPengurus">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5>Struktur Pengurus</h5>
+
+<button class="btn-close" data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body">
+
+<ul>
+
+<li>Ketua</li>
+<li>Sekretaris</li>
+<li>Bendahara</li>
+<li>Koordinator Lapangan</li>
+<li>Pengurus Blok</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- POPUP DASHBOARD -->
+
+<div class="modal fade" id="modalDashboard">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5>Dashboard Kas</h5>
+
+<button class="btn-close" data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body">
+
+Total Kas : <span id="totalKasPopup">Rp0</span><br>
+Iuran Masuk : <span id="totalIuranPopup">Rp0</span><br>
+Pengeluaran : <span id="totalKeluarPopup">Rp0</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- POPUP RIWAYAT -->
+
+<div class="modal fade" id="modalRiwayat">
+
+<div class="modal-dialog modal-lg">
+
+<div class="modal-content">
+
+<div class="modal-header">
 
 <h5>Riwayat Iuran</h5>
 
-<button class="btn btn-success mb-3" onclick="exportExcel()">
+<button class="btn-close" data-bs-dismiss="modal"></button>
 
-Export Excel
+</div>
 
-</button>
+<div class="modal-body">
 
 <table class="table table-striped">
 
 <thead>
 
 <tr>
-
 <th>Nama</th>
 <th>Blok</th>
 <th>Rumah</th>
 <th>Bulan</th>
 <th>Tahun</th>
 <th>Jumlah</th>
-
 </tr>
 
 </thead>
 
-<tbody id="tabelIuran"></tbody>
+<tbody id="tabelIuranPopup"></tbody>
 
 </table>
 
 </div>
 
+</div>
+
+</div>
+
+</div>
 
 
-<div class="footer">
+
+<div class="footer text-center mt-4">
 
 Kas Graha Alana • Sistem Kas Digital
 
 </div>
 
-</div>
 
 
 <script src="firebase.js"></script>
