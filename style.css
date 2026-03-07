@@ -117,3 +117,34 @@ transition:0.2s;
 .dashboard-card:hover{
 transform:scale(1.03);
 }
+
+.dashboard-card{
+padding:30px;
+border-radius:20px;
+color:white;
+text-align:center;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.dashboard-card:hover{
+transform:translateY(-5px);
+}
+
+.kas{
+background:linear-gradient(135deg,#2563eb,#1e40af);
+}
+
+.iuran{
+background:linear-gradient(135deg,#16a34a,#15803d);
+}
+
+.keluar{
+background:linear-gradient(135deg,#dc2626,#991b1b);
+}
+
+.dashboard-card span{
+opacity:0.8;
+font-size:13px;
+}
