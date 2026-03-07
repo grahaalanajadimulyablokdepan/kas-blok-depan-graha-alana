@@ -26,6 +26,10 @@ alert("Password salah")
 
 /* NOMOR RUMAH */
 
+let cekNomor=document.getElementById("cekNomor")
+
+if(cekNomor){
+
 for(let i=1;i<=25;i++){
 
 let opt=document.createElement("option")
@@ -33,7 +37,9 @@ let opt=document.createElement("option")
 opt.value=i
 opt.text=i
 
-document.getElementById("cekNomor").appendChild(opt)
+cekNomor.appendChild(opt)
+
+}
 
 }
 
@@ -58,7 +64,13 @@ html+=`<div class="${status}">${b}-${i}</div>`
 
 })
 
-document.getElementById("statusRumah").innerHTML=`<div class="status-box">${html}</div>`
+let statusBox=document.getElementById("statusRumah")
+
+if(statusBox){
+
+statusBox.innerHTML=`<div class="status-box">${html}</div>`
+
+}
 
 }
 
@@ -76,6 +88,10 @@ let wb=XLSX.utils.table_to_book(table)
 XLSX.writeFile(wb,"laporan-kas.xlsx")
 
 }
+
+
+/* PETA RUMAH */
+
 const blokData={
 "A1":20,
 "A2":24,
@@ -113,7 +129,11 @@ html+=`</div></div>`
 
 }
 
-document.getElementById("mapPerumahan").innerHTML=html
+let map=document.getElementById("mapPerumahan")
+
+if(map){
+map.innerHTML=html
+}
 
 }
 
