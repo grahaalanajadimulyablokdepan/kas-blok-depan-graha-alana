@@ -57,6 +57,7 @@ data-bs-target="#menu">
 </nav>
 
 
+
 <!-- SIDE MENU -->
 
 <div class="offcanvas offcanvas-end" id="menu">
@@ -136,8 +137,8 @@ data-bs-target="#modalKontak">
 </div>
 
 
-<div class="container mt-4">
 
+<div class="container mt-4">
 
 <!-- LOGIN -->
 
@@ -152,6 +153,7 @@ Login
 </button>
 
 </div>
+
 
 
 <!-- ADMIN PANEL -->
@@ -184,9 +186,7 @@ Login
 <input id="jumlah" class="form-control mb-2" placeholder="Jumlah">
 
 <button class="btn btn-success w-100" onclick="tambahIuran()">
-
 Simpan
-
 </button>
 
 </div>
@@ -205,9 +205,7 @@ Simpan
 <input id="jumlahKeluar" class="form-control mb-2" placeholder="Jumlah">
 
 <button class="btn btn-danger w-100" onclick="tambahPengeluaran()">
-
 Simpan
-
 </button>
 
 </div>
@@ -223,7 +221,6 @@ Simpan
 <!-- DASHBOARD -->
 
 <div class="row mt-4 g-3">
-
 
 <div class="col-md-4">
 
@@ -269,224 +266,128 @@ Simpan
 
 </div>
 
-
 </div>
 
 
 
-<!-- PETA -->
+<!-- MODALS SIDE MENU -->
 
-<div class="card shadow mt-4 p-4">
-
-<h5>Peta Rumah Perumahan</h5>
-
-<div id="mapPerumahan"></div>
-
-</div>
-
-
-
-<!-- RIWAYAT -->
-
-<div class="card shadow mt-4 p-4">
-
-<h5>Riwayat Iuran</h5>
-
-<button class="btn btn-success mb-3" onclick="exportExcel()">
-
-Download Excel
-
-</button>
-
-<table class="table table-striped">
-
-<thead>
-
-<tr>
-
-<th>Nama</th>
-<th>Blok</th>
-<th>Rumah</th>
-<th>Jumlah</th>
-
-</tr>
-
-</thead>
-
-<tbody id="tabelIuran"></tbody>
-
-</table>
-
-</div>
-
-</div>
-
-
-
-<!-- POPUP TOTAL KAS -->
-
-<div class="modal fade" id="modalKas">
-
+<div class="modal fade" id="modalTentang">
 <div class="modal-dialog">
-
 <div class="modal-content">
-
 <div class="modal-header">
-
-<h5>Rincian Kas Lingkungan</h5>
-
+<h5>Tentang Perumahan</h5>
 <button class="btn-close" data-bs-dismiss="modal"></button>
-
 </div>
-
 <div class="modal-body">
-
-<p><b>Total Iuran Masuk :</b> <span id="detailTotalIuran">Rp0</span></p>
-
-<p><b>Total Pengeluaran :</b> <span id="detailTotalKeluar">Rp0</span></p>
-
-<hr>
-
-<p><b>Total Kas Saat Ini :</b> <span id="detailTotalKas">Rp0</span></p>
-
-<p>
-
-Total kas merupakan saldo akhir setelah seluruh iuran warga
-dikurangi pengeluaran operasional lingkungan.
-
-</p>
-
+Perumahan Graha Alana merupakan lingkungan hunian yang nyaman dan tertata rapi.
 </div>
-
 </div>
-
 </div>
-
 </div>
 
 
-
-<!-- POPUP IURAN -->
-
-<div class="modal fade" id="modalIuran">
-
-<div class="modal-dialog modal-lg">
-
+<div class="modal fade" id="modalVisi">
+<div class="modal-dialog">
 <div class="modal-content">
-
 <div class="modal-header">
-
-<h5>Detail Iuran Warga</h5>
-
+<h5>Visi & Misi</h5>
 <button class="btn-close" data-bs-dismiss="modal"></button>
-
 </div>
-
 <div class="modal-body">
-
-<p><b>Total Iuran Terkumpul :</b> <span id="detailTotalIuran2">Rp0</span></p>
-
-<hr>
-
-<h6>Rumah Belum Bayar</h6>
-
-<div id="rumahBelumBayar">
-
-Belum ada data
-
+Visi: Mewujudkan lingkungan yang aman dan nyaman.
+<br><br>
+Misi:
+<ul>
+<li>Menjaga kebersihan</li>
+<li>Menjaga keamanan</li>
+<li>Meningkatkan solidaritas warga</li>
+</ul>
 </div>
-
 </div>
-
 </div>
-
-</div>
-
 </div>
 
 
-
-<!-- POPUP PENGELUARAN -->
-
-<div class="modal fade" id="modalKeluar">
-
-<div class="modal-dialog modal-lg">
-
+<div class="modal fade" id="modalFasilitas">
+<div class="modal-dialog">
 <div class="modal-content">
-
 <div class="modal-header">
-
-<h5>Detail Pengeluaran Kas</h5>
-
+<h5>Fasilitas Lingkungan</h5>
 <button class="btn-close" data-bs-dismiss="modal"></button>
-
 </div>
-
 <div class="modal-body">
-
-<table class="table">
-
-<thead>
-
-<tr>
-
-<th>Keterangan</th>
-<th>Jumlah</th>
-
-</tr>
-
-</thead>
-
-<tbody id="tabelPengeluaran"></tbody>
-
-</table>
-
-<hr>
-
-<h5>Total Pengeluaran :
-
-<span id="detailTotalKeluar2">Rp0</span>
-
-</h5>
-
+• Pos keamanan  
+• Jalan lingkungan  
+• Lampu jalan  
+• Area parkir warga
 </div>
-
 </div>
-
 </div>
-
 </div>
 
 
+<div class="modal fade" id="modalKeamanan">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h5>Sistem Keamanan</h5>
+<button class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body">
+Lingkungan menggunakan sistem keamanan warga dan patroli malam.
+</div>
+</div>
+</div>
+</div>
 
-<!-- MODAL KONTAK -->
+
+<div class="modal fade" id="modalPeraturan">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h5>Peraturan Warga</h5>
+<button class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body">
+• Menjaga kebersihan  
+• Membayar iuran tepat waktu  
+• Menjaga ketertiban lingkungan
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="modal fade" id="modalPengumuman">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h5>Pengumuman</h5>
+<button class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body">
+Belum ada pengumuman terbaru.
+</div>
+</div>
+</div>
+</div>
+
 
 <div class="modal fade" id="modalKontak">
-
 <div class="modal-dialog">
-
 <div class="modal-content">
-
 <div class="modal-header">
-
 <h5>Kontak Pengurus Blok A & B</h5>
-
 <button class="btn-close" data-bs-dismiss="modal"></button>
-
 </div>
-
 <div class="modal-body">
-
 Koordinator Blok A  
-Sekretaris Lingkungan  
-Bendahara Kas Lingkungan  
-
+Koordinator Blok B  
+Bendahara Lingkungan
 </div>
-
 </div>
-
 </div>
-
 </div>
 
 
