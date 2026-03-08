@@ -86,7 +86,7 @@ html+=`
 
 })
 
-let tabel=document.getElementById("tabelIuran")
+let tabel=document.getElementById("detailTabelIuran")
 if(tabel) tabel.innerHTML=html
 
 let totalIuranEl=document.getElementById("totalIuran")
