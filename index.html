@@ -394,3 +394,40 @@ Saldo kas berasal dari total iuran warga dikurangi seluruh pengeluaran lingkunga
 </div>
 </div>
 </div>
+
+  <script src="firebase.js"></script>
+<script src="app.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+const ctx=document.getElementById("chartKas");
+
+if(ctx){
+
+window.chartKas=new Chart(ctx,{
+type:'bar',
+data:{
+labels:["Iuran","Pengeluaran","Kas"],
+datasets:[{
+label:"Keuangan",
+data:[0,0,0],
+backgroundColor:[
+"#16a34a",
+"#dc2626",
+"#2563eb"
+]
+}]
+},
+options:{
+responsive:true
+}
+});
+
+}
+
+</script>
+
+</body>
+</html>
