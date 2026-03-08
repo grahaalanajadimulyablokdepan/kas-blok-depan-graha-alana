@@ -175,3 +175,156 @@ opacity:1;
 }
 
 }
+
+/* ===== MODAL SUPER UI ===== */
+
+.modal-dialog{
+margin:0;
+display:flex;
+align-items:flex-end;
+min-height:100vh;
+}
+
+.modal-dialog-centered{
+align-items:center;
+}
+
+.modal-content{
+
+border-radius:25px 25px 0 0;
+border:none;
+backdrop-filter:blur(12px);
+background:rgba(255,255,255,0.9);
+box-shadow:0 30px 80px rgba(0,0,0,0.25);
+
+animation:modalSlideUp .35s ease;
+
+}
+
+/* HEADER */
+
+.modal-header{
+
+background:linear-gradient(135deg,#2563eb,#1e40af);
+color:white;
+border:none;
+padding:18px 22px;
+font-weight:600;
+
+}
+
+.modal-header h5{
+font-weight:600;
+letter-spacing:.3px;
+}
+
+.btn-close{
+filter:invert(1);
+}
+
+/* BODY */
+
+.modal-body{
+padding:24px;
+line-height:1.6;
+}
+
+/* INPUT */
+
+.modal-body input,
+.modal-body select,
+.modal-body textarea{
+
+border-radius:14px;
+padding:12px;
+border:1px solid #e5e7eb;
+transition:.2s;
+
+}
+
+.modal-body input:focus,
+.modal-body textarea:focus,
+.modal-body select:focus{
+
+border-color:#2563eb;
+box-shadow:0 0 0 3px rgba(37,99,235,0.2);
+
+}
+
+/* BUTTON */
+
+.modal-body button{
+
+border-radius:14px;
+padding:13px;
+font-weight:600;
+
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+border:none;
+color:white;
+
+transition:.2s;
+
+}
+
+.modal-body button:hover{
+
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(37,99,235,0.35);
+
+}
+
+/* ANIMASI */
+
+@keyframes modalSlideUp{
+
+from{
+
+transform:translateY(60px);
+opacity:0;
+
+}
+
+to{
+
+transform:translateY(0);
+opacity:1;
+
+}
+
+}
+
+/* HEADER WARNA MENU */
+
+#modalTentang .modal-header{
+background:linear-gradient(135deg,#2563eb,#1e40af);
+}
+
+#modalVisi .modal-header{
+background:linear-gradient(135deg,#16a34a,#15803d);
+}
+
+#modalFasilitas .modal-header{
+background:linear-gradient(135deg,#06b6d4,#0891b2);
+}
+
+#modalKeamanan .modal-header{
+background:linear-gradient(135deg,#f59e0b,#d97706);
+}
+
+#modalPeraturan .modal-header{
+background:linear-gradient(135deg,#6b7280,#374151);
+}
+
+#modalPengumuman .modal-header{
+background:linear-gradient(135deg,#111827,#000000);
+}
+
+#modalKontak .modal-header{
+background:linear-gradient(135deg,#ef4444,#b91c1c);
+}
+
+#modalKomplain .modal-header{
+background:linear-gradient(135deg,#7c3aed,#5b21b6);
+}
