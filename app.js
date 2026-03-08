@@ -63,11 +63,11 @@ let rumahBayar=[]
 
 
 
-db.collection("iuran").get().then(snapshot=>{
+db.collection("iuran").get().then(s=>{
 
 let html=""
 
-snapshot.forEach(doc=>{
+s.forEach(doc=>{
 
 let d=doc.data()
 
@@ -86,21 +86,19 @@ html+=`
 
 })
 
-
-
 let tabel=document.getElementById("tabelIuran")
 if(tabel) tabel.innerHTML=html
 
-let elTotalIuran=document.getElementById("totalIuran")
-if(elTotalIuran) elTotalIuran.innerText=rupiah(totalIuran)
+let totalIuranEl=document.getElementById("totalIuran")
+if(totalIuranEl) totalIuranEl.innerText=rupiah(totalIuran)
 
 
 
-db.collection("pengeluaran").get().then(snapshot2=>{
+db.collection("pengeluaran").get().then(p=>{
 
 let htmlKeluar=""
 
-snapshot2.forEach(doc=>{
+p.forEach(doc=>{
 
 let d=doc.data()
 
@@ -115,20 +113,18 @@ htmlKeluar+=`
 
 })
 
-
-
 let tabelKeluar=document.getElementById("tabelPengeluaran")
 if(tabelKeluar) tabelKeluar.innerHTML=htmlKeluar
 
-let elKeluar=document.getElementById("totalKeluar")
-if(elKeluar) elKeluar.innerText=rupiah(totalKeluar)
+let totalKeluarEl=document.getElementById("totalKeluar")
+if(totalKeluarEl) totalKeluarEl.innerText=rupiah(totalKeluar)
 
 
 
 let kas=totalIuran-totalKeluar
 
-let elKas=document.getElementById("totalKas")
-if(elKas) elKas.innerText=rupiah(kas)
+let kasEl=document.getElementById("totalKas")
+if(kasEl) kasEl.innerText=rupiah(kas)
 
 
 
@@ -138,9 +134,9 @@ generateBelumBayar(rumahBayar)
 
 
 
-// =======================
+// ======================
 // STATISTIK RUMAH
-// =======================
+// ======================
 
 let totalRumah=0
 
@@ -153,20 +149,20 @@ let belumBayar=totalRumah-sudahBayar
 
 
 
-let elTotalRumah=document.getElementById("totalRumah")
-if(elTotalRumah) elTotalRumah.innerText=totalRumah
+let elTotal=document.getElementById("totalRumah")
+if(elTotal) elTotal.innerText=totalRumah
 
-let elSudah=document.getElementById("rumahBayar")
-if(elSudah) elSudah.innerText=sudahBayar
+let elBayar=document.getElementById("rumahBayar")
+if(elBayar) elBayar.innerText=sudahBayar
 
 let elBelum=document.getElementById("rumahBelum")
 if(elBelum) elBelum.innerText=belumBayar
 
 
 
-// =======================
+// ======================
 // PROGRESS BAR
-// =======================
+// ======================
 
 let persen=0
 
@@ -210,7 +206,6 @@ html+=`<div>${kode}</div>`
 }
 
 let el=document.getElementById("rumahBelumBayar")
-
 if(el) el.innerHTML=html
 
 }
