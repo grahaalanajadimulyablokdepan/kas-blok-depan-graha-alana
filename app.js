@@ -33,9 +33,11 @@ blok:blok,
 rumah:rumah,
 jumlah:Number(jumlah)
 
-})
+}).then(()=>{
 
 loadData()
+
+})
 
 }
 
@@ -49,9 +51,11 @@ db.collection("pengeluaran").add({
 ket:ket,
 jumlah:Number(jumlah)
 
-})
+}).then(()=>{
 
 loadData()
+
+})
 
 }
 
@@ -91,12 +95,19 @@ html+=`
 
 })
 
+if(document.getElementById("tabelIuran")){
 document.getElementById("tabelIuran").innerHTML=html
+}
 
 document.getElementById("totalIuran").innerText=rupiah(totalIuran)
 
+if(document.getElementById("detailTotalIuran")){
 document.getElementById("detailTotalIuran").innerText=rupiah(totalIuran)
+}
+
+if(document.getElementById("detailTotalIuran2")){
 document.getElementById("detailTotalIuran2").innerText=rupiah(totalIuran)
+}
 
 
 
@@ -123,25 +134,78 @@ htmlKeluar+=`
 
 })
 
+if(document.getElementById("tabelPengeluaran")){
 document.getElementById("tabelPengeluaran").innerHTML=htmlKeluar
+}
 
 document.getElementById("totalKeluar").innerText=rupiah(totalKeluar)
 
+if(document.getElementById("detailTotalKeluar")){
 document.getElementById("detailTotalKeluar").innerText=rupiah(totalKeluar)
+}
+
+if(document.getElementById("detailTotalKeluar2")){
 document.getElementById("detailTotalKeluar2").innerText=rupiah(totalKeluar)
+}
 
 
 
 let kas=totalIuran-totalKeluar
 
 document.getElementById("totalKas").innerText=rupiah(kas)
+
+if(document.getElementById("detailTotalKas")){
 document.getElementById("detailTotalKas").innerText=rupiah(kas)
+}
 
 
 
 updateMap(rumahBayar)
 
 generateBelumBayar(rumahBayar)
+
+
+
+// STATISTIK
+
+let totalRumah=0
+
+for(let b in blokData){
+
+totalRumah+=blokData[b]
+
+}
+
+let sudahBayar=rumahBayar.length
+
+let belumBayar=totalRumah-sudahBayar
+
+if(document.getElementById("totalRumah")){
+document.getElementById("totalRumah").innerText=totalRumah
+}
+
+if(document.getElementById("rumahBayar")){
+document.getElementById("rumahBayar").innerText=sudahBayar
+}
+
+if(document.getElementById("rumahBelum")){
+document.getElementById("rumahBelum").innerText=belumBayar
+}
+
+
+
+let persen=Math.round((sudahBayar/totalRumah)*100)
+
+let bar=document.getElementById("progressBayar")
+
+if(bar){
+
+bar.style.width=persen+"%"
+bar.innerText=persen+"%"
+
+}
+
+
 
 })
 
@@ -171,7 +235,9 @@ html+=`<div>${kode}</div>`
 
 }
 
+if(document.getElementById("rumahBelumBayar")){
 document.getElementById("rumahBelumBayar").innerHTML=html
+}
 
 }
 
@@ -224,7 +290,11 @@ html+=`</div></div>`
 
 }
 
-document.getElementById("mapPerumahan").innerHTML=html
+let map=document.getElementById("mapPerumahan")
+
+if(map){
+map.innerHTML=html
+}
 
 }
 
@@ -239,7 +309,6 @@ let el=document.getElementById(r)
 if(el){
 
 el.classList.remove("belum")
-
 el.classList.add("lunas")
 
 }
@@ -251,27 +320,4 @@ el.classList.add("lunas")
 
 
 generateMap()
-
 loadData()
-let totalRumah=0
-
-for(let b in blokData){
-
-totalRumah+=blokData[b]
-
-}
-
-let sudahBayar=rumahBayar.length
-
-let belumBayar=totalRumah-sudahBayar
-
-document.getElementById("totalRumah").innerText=totalRumah
-document.getElementById("rumahBayar").innerText=sudahBayar
-document.getElementById("rumahBelum").innerText=belumBayar
-
-let persen=Math.round((sudahBayar/totalRumah)*100)
-
-let bar=document.getElementById("progressBayar")
-
-bar.style.width=persen+"%"
-bar.innerText=persen+"%"
