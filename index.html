@@ -481,7 +481,49 @@ WA : 0896-9984-6687
 </div>
 </div>
 
+<!-- MODAL KOMPLAIN -->
 
+<div class="modal fade" id="modalKomplain">
+<div class="modal-dialog">
+<div class="modal-content">
+
+<div class="modal-header">
+<h5>Komplain / Masukan Warga</h5>
+<button class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<div class="modal-body">
+
+<input id="komplainNama" class="form-control mb-2" placeholder="Nama">
+
+<select id="komplainBlok" class="form-control mb-2">
+<option>A1</option>
+<option>A2</option>
+<option>A3</option>
+<option>B1</option>
+<option>B2</option>
+<option>B3</option>
+</select>
+
+<input id="komplainRumah" class="form-control mb-2" placeholder="No Rumah">
+
+<input id="komplainHP" class="form-control mb-2" placeholder="No HP">
+
+<textarea id="komplainIsi"
+class="form-control mb-3"
+placeholder="Isi Komplain atau Masukan"></textarea>
+
+<button class="btn btn-primary w-100"
+onclick="kirimKomplain()">
+Kirim Masukan
+</button>
+
+</div>
+
+</div>
+</div>
+</div>
+  
 <script src="firebase.js"></script>
 <script src="app.js"></script>
 
