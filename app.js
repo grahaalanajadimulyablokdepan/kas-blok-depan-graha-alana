@@ -320,7 +320,8 @@ tanggal:new Date()
 
 }).then(()=>{
 
-alert("Masukan berhasil dikirim")
+let toast = new bootstrap.Toast(document.getElementById("toastSukses"))
+toast.show()
 
 document.getElementById("komplainNama").value=""
 document.getElementById("komplainRumah").value=""
