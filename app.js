@@ -422,3 +422,22 @@ document.getElementById("tabelKomplain").innerHTML=html
 })
 
 }
+function loginWarga(){
+
+let nama=document.getElementById("wargaNama").value
+let blok=document.getElementById("wargaBlok").value
+let rumah=document.getElementById("wargaRumah").value
+
+if(nama=="" || rumah==""){
+alert("Isi data dulu")
+return
+}
+
+localStorage.setItem("wargaLogin","true")
+localStorage.setItem("nama",nama)
+localStorage.setItem("blok",blok)
+localStorage.setItem("rumah",rumah)
+
+document.getElementById("loginWarga").style.display="none"
+
+}
