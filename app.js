@@ -297,6 +297,7 @@ el.classList.add("lunas")
 
 generateMap()
 loadData()
+updateBadge()
 function bukaModal(id){
 let modal = new bootstrap.Modal(document.getElementById(id))
 modal.show()
