@@ -261,8 +261,7 @@ html+=`<div class="blok">
 
 for(let i=1;i<=blokData[blok];i++){
 
-html+=`<div id="${blok}-${i}" class="rumah belum">${blok}-${i}</div>`
-
+html+=`<div id="${blok}-${i}" class="rumah belum" onclick="bukaRumah('${blok}-${i}')">${blok}-${i}</div>`
 }
 
 html+=`</div></div>`
