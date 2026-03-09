@@ -377,3 +377,13 @@ modal.show()
 })
 
 }
+
+function updateBadge(){
+
+db.collection("komplain").get().then(s=>{
+
+document.getElementById("badgeKomplain").innerText=s.size
+
+})
+
+}
