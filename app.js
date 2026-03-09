@@ -126,10 +126,17 @@ let kas=totalIuran-totalKeluar
 let kasEl=document.getElementById("totalKas")
 if(kasEl) kasEl.innerText=rupiah(kas)
 
-let detailIuran=document.getElementById("detailIuran")
-if(detailIuran) detailIuran.innerText=rupiah(totalIuran)
+let detailIuran2=document.getElementById("detailIuran2")
+if(detailIuran2) detailIuran2.innerText=rupiah(totalIuran)
 
-let detailKeluar=document.getElementById("detailKeluar")
+let totalIuranDetail=document.getElementById("totalIuranDetail")
+if(totalIuranDetail) totalIuranDetail.innerText=rupiah(totalIuran)
+
+let detailKeluar2=document.getElementById("detailKeluar2")
+if(detailKeluar2) detailKeluar2.innerText=rupiah(totalKeluar)
+
+let totalKeluarDetail=document.getElementById("totalKeluarDetail")
+if(totalKeluarDetail) totalKeluarDetail.innerText=rupiah(totalKeluar)
 if(detailKeluar) detailKeluar.innerText=rupiah(totalKeluar)
 
 let detailKas=document.getElementById("detailKas")
