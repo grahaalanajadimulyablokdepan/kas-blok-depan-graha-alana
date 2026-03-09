@@ -265,10 +265,49 @@ data-bs-target="#modalKeluar">
 
 <div class="modal-body">
 
-Saldo kas berasal dari total iuran warga dikurangi pengeluaran.
+<div class="row text-center mb-4">
+
+<div class="col">
+<h6>Total Iuran</h6>
+<h4 id="detailIuran">Rp0</h4>
+</div>
+
+<div class="col">
+<h6>Total Pengeluaran</h6>
+<h4 id="detailKeluar">Rp0</h4>
+</div>
+
+<div class="col">
+<h6>Saldo Kas</h6>
+<h4 id="detailKas">Rp0</h4>
+</div>
 
 </div>
 
+<hr>
+
+<h6>Ringkasan Kas Lingkungan</h6>
+
+<ul class="list-group">
+
+<li class="list-group-item d-flex justify-content-between">
+<span>Total Iuran Warga</span>
+<b id="detailIuran2">Rp0</b>
+</li>
+
+<li class="list-group-item d-flex justify-content-between">
+<span>Total Pengeluaran</span>
+<b id="detailKeluar2">Rp0</b>
+</li>
+
+<li class="list-group-item d-flex justify-content-between">
+<span>Saldo Akhir Kas</span>
+<b id="detailKas2">Rp0</b>
+</li>
+
+</ul>
+
+</div>
 </div>
 </div>
 </div>
@@ -287,7 +326,36 @@ Saldo kas berasal dari total iuran warga dikurangi pengeluaran.
 
 <div class="modal-body">
 
-Detail iuran warga.
+<table class="table table-striped">
+
+<thead>
+<tr>
+<th>Nama</th>
+<th>Blok</th>
+<th>Rumah</th>
+<th>Nominal</th>
+</tr>
+</thead>
+
+<tbody id="detailTabelIuran">
+
+<tr>
+<td colspan="4" class="text-center">Belum ada data</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<hr>
+
+<div class="text-end">
+
+<h5>Total Iuran : 
+<span id="totalIuranDetail">Rp0</span>
+</h5>
+
+</div>
 
 </div>
 
@@ -309,7 +377,32 @@ Detail iuran warga.
 
 <div class="modal-body">
 
-Detail pengeluaran lingkungan.
+<table class="table table-striped">
+
+<thead>
+<tr>
+<th>Keterangan</th>
+<th>Nominal</th>
+</tr>
+</thead>
+
+<tbody id="detailTabelKeluar">
+<tr>
+<td colspan="2" class="text-center">Belum ada data</td>
+</tr>
+</tbody>
+
+</table>
+
+<hr>
+
+<div class="text-end">
+
+<h5>Total Pengeluaran : 
+<span id="totalKeluarDetail">Rp0</span>
+</h5>
+
+</div>
 
 </div>
 
