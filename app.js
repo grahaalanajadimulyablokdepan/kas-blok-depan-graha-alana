@@ -545,3 +545,22 @@ opt.text=i
 tahunSelect.appendChild(opt)
 
 }
+
+function filterIuran(){
+
+let bulan=document.getElementById("filterBulan").value
+let tahun=document.getElementById("filterTahun").value
+
+let data=iuran
+
+if(bulan!=""){
+data=data.filter(x=>x.bulan==bulan)
+}
+
+if(tahun!=""){
+data=data.filter(x=>x.tahun==tahun)
+}
+
+render(data)
+
+}
