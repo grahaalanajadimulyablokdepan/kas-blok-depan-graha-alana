@@ -464,3 +464,32 @@ localStorage.removeItem("wargaLogin")
 location.reload()
 
 }
+function cekAksesKomplain(){
+
+let status = localStorage.getItem("wargaLogin")
+
+if(status!="true"){
+alert("Silakan login warga dulu")
+return
+}
+
+let modal = new bootstrap.Modal(document.getElementById("modalKomplain"))
+modal.show()
+
+}
+
+function cekAksesDaftarKomplain(){
+
+let status = localStorage.getItem("wargaLogin")
+
+if(status!="true"){
+alert("Silakan login warga dulu")
+return
+}
+
+loadKomplain()
+
+let modal = new bootstrap.Modal(document.getElementById("modalKomplainList"))
+modal.show()
+
+}
