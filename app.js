@@ -29,6 +29,11 @@ let bulan=document.getElementById("bulan").value
 let tahun=document.getElementById("tahun").value
 let jumlah=parseInt(document.getElementById("jumlah").value)
 
+if(!nama || !rumah || !jumlah){
+alert("Data belum lengkap")
+return
+}
+
 let data={
 nama:nama,
 blok:blok,
@@ -41,8 +46,11 @@ jumlah:jumlah
 
 iuran.push(data)
 
-simpanData()
+localStorage.setItem("dataIuran",JSON.stringify(iuran))
+
 render()
+
+alert("Iuran berhasil disimpan")
 
 }
 
