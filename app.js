@@ -1,5 +1,5 @@
 const passwords=["ketua123","bendahara123"]
-let iuran=JSON.parse(localStorage.getItem("dataIuran")) || []
+let iuran=[]
 
 function loginAdmin(){
 
@@ -49,7 +49,7 @@ iuran.push(data)
 
 localStorage.setItem("dataIuran",JSON.stringify(iuran))
 
-render()
+loadData()
 
 alert("Iuran berhasil disimpan")
 
@@ -560,7 +560,7 @@ function filterIuran(){
 let bulan=document.getElementById("filterBulan").value
 let tahun=document.getElementById("filterTahun").value
 
-let data=iuran
+let data=dataIuran
 
 if(bulan!=""){
 data=data.filter(x=>x.bulan==bulan)
@@ -570,7 +570,7 @@ if(tahun!=""){
 data=data.filter(x=>x.tahun==tahun)
 }
 
-loadData()
+render(data)
 
 }
 
