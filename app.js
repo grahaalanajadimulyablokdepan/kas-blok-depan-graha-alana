@@ -469,7 +469,7 @@ function cekAksesKomplain(){
 let status = localStorage.getItem("wargaLogin")
 
 if(status!="true"){
-alert("Silakan login warga dulu")
+alert("Harus login warga dulu")
 return
 }
 
@@ -483,7 +483,7 @@ function cekAksesDaftarKomplain(){
 let status = localStorage.getItem("wargaLogin")
 
 if(status!="true"){
-alert("Silakan login warga dulu")
+alert("Harus login warga dulu")
 return
 }
 
