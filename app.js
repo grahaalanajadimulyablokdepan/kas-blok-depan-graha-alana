@@ -439,6 +439,7 @@ localStorage.setItem("blok",blok)
 localStorage.setItem("rumah",rumah)
 
 document.getElementById("loginWarga").style.display="none"
+document.getElementById("dashboard").style.display="flex"
 
 }
 
@@ -447,7 +448,10 @@ function cekLoginWarga(){
 let status=localStorage.getItem("wargaLogin")
 
 if(status=="true"){
+
 document.getElementById("loginWarga").style.display="none"
+document.getElementById("dashboard").style.display="flex"
+
 }
 
 }
