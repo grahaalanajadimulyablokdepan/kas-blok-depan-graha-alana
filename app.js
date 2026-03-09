@@ -441,3 +441,15 @@ localStorage.setItem("rumah",rumah)
 document.getElementById("loginWarga").style.display="none"
 
 }
+
+function cekLoginWarga(){
+
+let status=localStorage.getItem("wargaLogin")
+
+if(status=="true"){
+document.getElementById("loginWarga").style.display="none"
+}
+
+}
+
+cekLoginWarga()
