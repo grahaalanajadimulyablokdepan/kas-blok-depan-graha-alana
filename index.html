@@ -6,11 +6,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Sistem Kas Lingkungan • Graha Alana</title>
+<title>KAS Graha Alana Blok Depan</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -20,286 +22,85 @@
 
 <body>
 
+<!-- HEADER -->
 
-<!-- NAVBAR -->
+<header class="header">
 
-<nav class="navbar navbar-dark bg-dark">
-<div class="container">
-
-<div class="d-flex align-items-center">
-
-<img src="logo.png" class="logo">
-
-<div class="text-white">
-
-Kas Graha Alana
-
-<div class="header-sub">
-Blok A1 • A2 • A3 • B1 • B2 • B3
+<div class="logo">
+🏡 KAS GRAHA ALANA BLOK DEPAN
 </div>
 
-</div>
-</div>
-
-<button class="btn btn-outline-light ms-auto"
-data-bs-toggle="offcanvas"
-data-bs-target="#menu">
-
+<button class="hamburger" onclick="toggleMenu()">
 ☰
-
 </button>
 
-</div>
-</nav>
-
+</header>
 
 <!-- SIDE MENU -->
 
-<div class="offcanvas offcanvas-end" id="menu">
+<div id="sideMenu" class="sideMenu">
 
-<div class="offcanvas-header">
-<h5>Menu Graha Alana</h5>
-<button class="btn-close" data-bs-dismiss="offcanvas"></button>
+<h4>Graha Alana</h4>
+
+<button onclick="showPopup('visiPopup')">Visi & Misi</button>
+<button onclick="showPopup('fasilitasPopup')">Fasilitas</button>
+<button onclick="showPopup('keamananPopup')">Sistem Keamanan</button>
+<button onclick="showPopup('peraturanPopup')">Peraturan</button>
+<button onclick="showPopup('pengumumanPopup')">Pengumuman</button>
+<button onclick="showPopup('kontakPopup')">Kontak Pengurus</button>
+
+<button onclick="showPopup('komplainPopup')">Komplain Warga</button>
+<button onclick="showPopup('listKomplainPopup')">Daftar Komplain</button>
+
 </div>
 
-<div class="offcanvas-body">
-
-<div class="d-grid gap-3">
-
-<button class="btn btn-primary"
-data-bs-dismiss="offcanvas"
-data-bs-toggle="modal"
-data-bs-target="#modalTentang">
-🏠 Tentang Perumahan
-</button>
-
-<button class="btn btn-success"
-data-bs-dismiss="offcanvas"
-data-bs-toggle="modal"
-data-bs-target="#modalVisi">
-🌿 Visi & Misi Lingkungan
-</button>
-
-<button class="btn btn-info"
-data-bs-dismiss="offcanvas"
-data-bs-toggle="modal"
-data-bs-target="#modalFasilitas">
-🏞️ Fasilitas Lingkungan
-</button>
-
-<button class="btn btn-warning"
-data-bs-dismiss="offcanvas"
-data-bs-toggle="modal"
-data-bs-target="#modalKeamanan">
-🔐 Sistem Keamanan
-</button>
-
-<button class="btn btn-secondary"
-data-bs-dismiss="offcanvas"
-data-bs-toggle="modal"
-data-bs-target="#modalPeraturan">
-📜 Peraturan Warga
-</button>
-
-<button class="btn btn-dark"
-data-bs-dismiss="offcanvas"
-data-bs-toggle="modal"
-data-bs-target="#modalPengumuman">
-📢 Pengumuman
-</button>
-
-<button class="btn btn-danger"
-data-bs-dismiss="offcanvas"
-data-bs-toggle="modal"
-data-bs-target="#modalKontak">
-☎️ Kontak Pengurus
-</button>
-
-<button class="menu-btn btn btn-danger w-100 mb-2"
-data-bs-dismiss="offcanvas"
-onclick="cekAksesKomplain()">
-
-📝 Komplain / Masukan Warga
-<span class="badge bg-danger ms-2" id="badgeKomplain">0</span>
-
-</button>
-
-<button class="btn btn-warning w-100 mb-2"
-onclick="cekAksesDaftarKomplain()"
-data-bs-dismiss="offcanvas">
-📋 Daftar Komplain Warga
-</button>
-</div>
-</div>
-</div>
-
+<!-- DASHBOARD -->
 
 <div class="container mt-4">
 
-<!-- LOGIN -->
-
-<div id="loginBox" class="card p-4 shadow mb-4">
-
-<h5>Login Pengurus</h5>
-
-<input id="adminPass" type="password" class="form-control mb-3" placeholder="Password">
-
-<button class="btn btn-primary w-100" onclick="loginAdmin()">Login</button>
-
-</div>
-
-
-<!-- ADMIN PANEL -->
-
-<div id="adminPanel" style="display:none">
-
 <div class="row g-3">
 
-<div class="col-md-6">
-
-<div class="card p-4 shadow">
-
-<h5>Input Iuran</h5>
-
-<input id="nama" class="form-control" placeholder="Nama">
-
-<select id="blok" class="form-control">
-<option>A1</option>
-<option>A2</option>
-<option>A3</option>
-<option>B1</option>
-<option>B2</option>
-<option>B3</option>
-</select>
-
-<input id="rumah" class="form-control" placeholder="No Rumah">
-
-<select id="tanggal" class="form-control"></select>
-
-<select id="bulan" class="form-control">
-<option>Januari</option>
-<option>Februari</option>
-<option>Maret</option>
-<option>April</option>
-<option>Mei</option>
-<option>Juni</option>
-<option>Juli</option>
-<option>Agustus</option>
-<option>September</option>
-<option>Oktober</option>
-<option>November</option>
-<option>Desember</option>
-</select>
-
-<select id="tahun" class="form-control"></select>
-
-<input id="jumlah" class="form-control" placeholder="Jumlah">
-<button class="btn btn-success w-100" onclick="tambahIuran()">Simpan</button>
-
+<div class="col-md-4">
+<div class="card">
+<div class="card-body text-center">
+<h5>Total Iuran</h5>
+<h3 id="totalIuran">Rp0</h3>
+</div>
 </div>
 </div>
 
-
-<div class="col-md-6">
-
-<div class="card p-4 shadow">
-
-<h5>Input Pengeluaran</h5>
-
-<input id="ket" class="form-control mb-2" placeholder="Keterangan">
-
-<input id="jumlahKeluar" class="form-control mb-2" placeholder="Jumlah">
-
-<button class="btn btn-danger w-100" onclick="tambahPengeluaran()">Simpan</button>
-
+<div class="col-md-4">
+<div class="card">
+<div class="card-body text-center">
+<h5>Total Pengeluaran</h5>
+<h3 id="totalKeluar">Rp0</h3>
+</div>
 </div>
 </div>
 
-</div>
-</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-body text-center">
+<h5>Total Kas</h5>
+<h3 id="totalKas">Rp0</h3>
 
-  <!-- LOGIN WARGA -->
-
-<div id="loginWarga" class="card p-4 shadow mb-4">
-
-<h5>Login Warga</h5>
-
-<input id="wargaNama" class="form-control mb-2" placeholder="Nama">
-
-<select id="wargaBlok" class="form-control mb-2">
-<option>A1</option>
-<option>A2</option>
-<option>A3</option>
-<option>B1</option>
-<option>B2</option>
-<option>B3</option>
-</select>
-
-<input id="wargaRumah" class="form-control mb-2" placeholder="No Rumah">
-
-<button class="btn btn-success w-100" onclick="loginWarga()">
-Masuk
+<button class="btn btn-sm btn-dark mt-2" onclick="detailKas()">
+Detail Kas
 </button>
 
 </div>
-
-  <select id="filterBulan" class="form-control mb-2"></select>
-<select id="filterTahun" class="form-control mb-2"></select>
-  
-<!-- DASHBOARD -->
-<button class="btn btn-secondary mb-3" onclick="logoutWarga()">
-Logout Warga
-</button>
-  
-<div id="dashboard" class="row mt-4 g-3">
-
-<div class="col-md-4">
-
-<div class="dashboard-card kas"
-data-bs-toggle="modal"
-data-bs-target="#modalKas">
-
-<h6>Total Kas</h6>
-<h2 id="totalKas">Rp0</h2>
-
-</div>
-</div>
-
-
-<div class="col-md-4">
-
-<div class="dashboard-card iuran"
-data-bs-toggle="modal"
-data-bs-target="#modalIuran">
-
-<h6>Iuran Masuk</h6>
-<h2 id="totalIuran">Rp0</h2>
-
-</div>
-</div>
-
-
-<div class="col-md-4">
-
-<div class="dashboard-card keluar"
-data-bs-toggle="modal"
-data-bs-target="#modalKeluar">
-
-<h6>Pengeluaran</h6>
-<h2 id="totalKeluar">Rp0</h2>
-
 </div>
 </div>
 
 </div>
-<h4>Rumah Belum Bayar</h4>
-<div id="rumahBelumBayar"></div>
 
 <!-- GRAFIK -->
 
-<div class="card shadow mt-4 p-4">
+<div class="card mt-4">
 
-<h6>Grafik Kas Lingkungan</h6>
+<div class="card-body">
+
+<h5>Grafik Kas</h5>
 
 <canvas id="chartKas"></canvas>
 
@@ -307,577 +108,167 @@ data-bs-target="#modalKeluar">
 
 </div>
 
+<!-- RUMAH BELUM BAYAR -->
 
-<!-- MODAL TOTAL KAS -->
+<div class="card mt-4">
 
-<div class="modal fade" id="modalKas">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
+<div class="card-body">
 
-<div class="modal-header">
-<h5>Total Kas</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body">
-
-<div class="row text-center mb-4">
-
-<div class="col">
-<h6>Total Iuran</h6>
-<b id="totalIuran2">Rp0</b>
-</div>
-
-<div class="col">
-<h6>Total Pengeluaran</h6>
-<h4 id="totalIuran">Rp0</h4>
-</div>
-
-<div class="col">
-<h6>Saldo Kas</h6>
-<h4 id="detailKas">Rp0</h4>
-</div>
-
-</div>
-
-<hr>
-
-<h6>Ringkasan Kas Lingkungan</h6>
-
-<ul class="list-group">
-
-<li class="list-group-item d-flex justify-content-between">
-<span>Total Iuran Warga</span>
-<b id="detailIuran2">Rp0</b>
-</li>
-
-<li class="list-group-item d-flex justify-content-between">
-<span>Total Pengeluaran</span>
-<b id="detailKeluar2">Rp0</b>
-</li>
-
-<li class="list-group-item d-flex justify-content-between">
-<span>Saldo Akhir Kas</span>
-<b id="detailKas2">Rp0</b>
-</li>
-
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-
-
-<!-- MODAL IURAN -->
-
-<div class="modal fade" id="modalIuran">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-
-<div class="modal-header">
-<h5>Iuran Warga</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body">
-
-<table class="table table-striped">
-
-<thead>
-<tr>
-<th>Nama</th>
-<th>Blok</th>
-<th>Rumah</th>
-<th>Nominal</th>
-</tr>
-</thead>
-
-<tbody id="detailTabelIuran">
-
-<tr>
-<td colspan="4" class="text-center">Belum ada data</td>
-</tr>
-
-</tbody>
-
-</table>
-
-<hr>
-
-<div class="text-end">
-
-<h5>Total Iuran : 
-<span id="totalIuranDetail">Rp0</span>
-</h5>
-
-</div>
-
-</div>
-
-</div>
-</div>
-</div>
-
-
-<!-- MODAL PENGELUARAN -->
-
-<div class="modal fade" id="modalKeluar">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-
-<div class="modal-header">
-<h5>Pengeluaran Kas</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body">
-
-<table class="table table-striped">
-
-<thead>
-<tr>
-<th>Tanggal</th>
-<th>Bulan</th>
-<th>Tahun</th>
-<th>Keterangan</th>
-<th>Nominal</th>
-</tr>
-</thead>
-
-<tbody id="detailTabelKeluar">
-<tr>
-<td colspan="5" class="text-center">Belum ada data</td>
-</tr>
-</tbody>
-
-</table>
-
-<hr>
-
-<div class="text-end">
-
-<h5>Total Pengeluaran : 
-<span id="totalKeluarDetail">Rp0</span>
-</h5>
-
-</div>
-
-</div>
-
-</div>
-</div>
-</div>
-
-
-  <!-- MODAL HISTORI RUMAH -->
-
-<div class="modal fade" id="modalRumah">
-<div class="modal-dialog modal-lg modal-dialog-centered">
-<div class="modal-content">
-
-<div class="modal-header">
-<h5 id="judulRumah">Histori Pembayaran Rumah</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body">
-
-<table class="table table-striped">
-
-<thead>
-<tr>
-<th>Nama</th>
-<th>Blok</th>
-<th>Rumah</th>
-<th>Nominal</th>
-</tr>
-</thead>
-
-<tbody id="historiRumah">
-
-<tr>
-<td colspan="4" class="text-center">Belum ada pembayaran</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-</div>
-</div>
-
-<!-- MODAL TENTANG -->
-
-<div class="modal fade" id="modalTentang">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-
-<div class="modal-header">
-<h5>Tentang Perumahan</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body">
-Graha Alana Jadimulya merupakan lingkungan hunian yang nyaman dan tertata.
-</div>
+<h5>Rumah Belum Bayar</h5>
 
-</div>
-</div>
-</div>
-
-
-<!-- MODAL VISI -->
-
-<div class="modal fade" id="modalVisi">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-
-<div class="modal-header">
-<h5>Visi & Misi</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body">
-
-<b>Visi</b>
-<br>
-Lingkungan aman dan harmonis.
-
-<br><br>
-
-<b>Misi</b>
-
-<ul>
-<li>Menjaga kebersihan</li>
-<li>Keamanan lingkungan</li>
-<li>Kebersamaan warga</li>
-</ul>
-
-</div>
-
-</div>
-</div>
-</div>
-
-
-<!-- MODAL FASILITAS -->
-
-<div class="modal fade" id="modalFasilitas">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-
-<div class="modal-header">
-<h5>Fasilitas Lingkungan</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body">
-
-<ul>
-<li>Pos keamanan</li>
-<li>Lampu jalan</li>
-<li>Area parkir</li>
-</ul>
-
-</div>
-
-</div>
-</div>
-</div>
-
-
-<!-- MODAL KEAMANAN -->
-
-<div class="modal fade" id="modalKeamanan">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-
-<div class="modal-header">
-<h5>Sistem Keamanan</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body">
-
-Ronda malam dan koordinasi warga.
-
-</div>
-
-</div>
-</div>
-</div>
-
+<div id="rumahBelumBayar"></div>
 
-<!-- MODAL PERATURAN -->
-
-<div class="modal fade" id="modalPeraturan">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-
-<div class="modal-header">
-<h5>Peraturan Warga</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body">
-
-<ul>
-<li>Menjaga kebersihan</li>
-<li>Membayar iuran tepat waktu</li>
-</ul>
-
-</div>
-
-</div>
-</div>
-</div>
-
-
-<!-- MODAL PENGUMUMAN -->
-
-<div class="modal fade" id="modalPengumuman">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-
-<div class="modal-header">
-<h5>Pengumuman</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body">
-Belum ada pengumuman.
-</div>
-
-</div>
-</div>
-</div>
-
-
-<!-- MODAL KONTAK -->
-
-<div class="modal fade" id="modalKontak">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-
-<div class="modal-header">
-<h5>Kontak Pengurus</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body">
-
-<div class="card mb-3 shadow-sm">
-<div class="card-body d-flex align-items-center">
-
-<img src="Caridi.jpg"
-width="60"
-height="60"
-style="border-radius:50%;margin-right:15px;object-fit:cover;">
-  
-<div class="flex-grow-1">
-<b>Caridi</b><br>
-<small>Ketua Pengurus</small>
-</div>
-
-<a href="https://wa.me/6289699846687"
-target="_blank"
-class="btn btn-success btn-sm">
-
-💬 WA
-
-</a>
-
-</div>
 </div>
 
-
-<div class="card mb-3 shadow-sm">
-<div class="card-body d-flex align-items-center">
-
-<img src="https://i.pravatar.cc/80?img=32"
-width="60"
-height="60"
-style="border-radius:50%;margin-right:15px;object-fit:cover;">
-
-<div class="flex-grow-1">
-<b>Rifqi</b><br>
-<small>Bendahara</small>
 </div>
 
-<a href="https://wa.me/6281234567890"
-target="_blank"
-class="btn btn-success btn-sm">
+<!-- PETA BLOK -->
 
-💬 WA
-
-</a>
-
-</div>
-</div>
+<div class="card mt-4">
 
+<div class="card-body">
 
-<div class="card shadow-sm">
-<div class="card-body d-flex align-items-center">
+<h5>Peta Blok Rumah</h5>
 
-<img src="dedi.jpg"
-width="60"
-height="60"
-style="border-radius:50%;margin-right:15px;object-fit:cover;">
+<div id="mapPerumahan"></div>
 
-<div class="flex-grow-1">
-<b>Dedi & Angga</b><br>
-<small>Security/Keamanan</small>
 </div>
-
-<a href="https://wa.me/+6282192887875"
-target="_blank"
-class="btn btn-success btn-sm">
-
-💬 WA
 
-</a>
-
-</div>   
-</div>   
-
-</div>   
-</div>   
-</div>   
-</div>
-  
-<!-- MODAL KOMPLAIN -->
-
-<div class="modal fade" id="modalKomplain">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-
-<div class="modal-header">
-<h5>Komplain / Masukan Warga</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
 </div>
 
-<div class="modal-body">
+<!-- BUTTON ACTION -->
 
-<input id="komplainNama" class="form-control mb-2" placeholder="Nama">
+<div class="actionButtons">
 
-<select id="komplainBlok" class="form-control mb-2">
-<option>A1</option>
-<option>A2</option>
-<option>A3</option>
-<option>B1</option>
-<option>B2</option>
-<option>B3</option>
-</select>
+<button onclick="showPopup('loginAdmin')">
+Login Admin
+</button>
 
-<input id="komplainRumah" class="form-control mb-2" placeholder="No Rumah">
+<button onclick="showPopup('loginWarga')">
+Login Warga
+</button>
 
-<input id="komplainHP" class="form-control mb-2" placeholder="No HP">
+<button onclick="showPopup('iuranPopup')">
+Input Iuran
+</button>
 
-<textarea id="komplainIsi"
-class="form-control mb-3"
-placeholder="Isi Komplain atau Masukan"></textarea>
+<button onclick="showPopup('pengeluaranPopup')">
+Input Pengeluaran
+</button>
 
-<button class="btn btn-primary w-100"
-onclick="kirimKomplain()">
-Kirim Masukan
+<button onclick="exportExcel()">
+Export Excel
 </button>
 
 </div>
 
 </div>
+
+<!-- POPUP LOGIN ADMIN -->
+
+<div class="popup" id="loginAdmin">
+
+<div class="popupContent">
+
+<h4>Login Admin</h4>
+
+<input id="adminUser" placeholder="Username">
+<input id="adminPass" type="password" placeholder="Password">
+
+<button onclick="loginAdmin()">Login</button>
+
 </div>
+
 </div>
-  
+
+<!-- POPUP LOGIN WARGA -->
+
+<div class="popup" id="loginWarga">
+
+<div class="popupContent">
+
+<h4>Login Warga</h4>
+
+<input id="wargaNama" placeholder="Nama">
+<input id="wargaBlok" placeholder="Blok">
+<input id="wargaRumah" placeholder="No Rumah">
+
+<button onclick="loginWarga()">Login</button>
+
+</div>
+
+</div>
+
+<!-- POPUP IURAN -->
+
+<div class="popup" id="iuranPopup">
+
+<div class="popupContent">
+
+<h4>Input Iuran</h4>
+
+<input id="namaIuran" placeholder="Nama">
+<select id="blokIuran"></select>
+<select id="rumahIuran"></select>
+
+<select id="tglIuran"></select>
+<select id="blnIuran"></select>
+<select id="thnIuran"></select>
+
+<input id="nominalIuran" placeholder="Nominal">
+
+<button onclick="tambahIuran()">Simpan</button>
+
+</div>
+
+</div>
+
+<!-- POPUP PENGELUARAN -->
+
+<div class="popup" id="pengeluaranPopup">
+
+<div class="popupContent">
+
+<h4>Input Pengeluaran</h4>
+
+<select id="tglKeluar"></select>
+<select id="blnKeluar"></select>
+<select id="thnKeluar"></select>
+
+<input id="ketKeluar" placeholder="Keterangan">
+<input id="nominalKeluar" placeholder="Nominal">
+
+<button onclick="tambahPengeluaran()">Simpan</button>
+
+</div>
+
+</div>
+
+<!-- POPUP KOMPLAIN -->
+
+<div class="popup" id="komplainPopup">
+
+<div class="popupContent">
+
+<h4>Komplain Warga</h4>
+
+<input id="namaKomplain" placeholder="Nama">
+<input id="blokKomplain" placeholder="Blok">
+
+<select id="tglKomplain"></select>
+<select id="blnKomplain"></select>
+<select id="thnKomplain"></select>
+
+<textarea id="isiKomplain"></textarea>
+
+<button onclick="kirimKomplain()">Kirim</button>
+
+</div>
+
+</div>
+
 <script src="firebase.js"></script>
 <script src="app.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-
-const ctx=document.getElementById("chartKas");
-
-if(ctx){
-
-new Chart(ctx,{
-type:'bar',
-data:{
-labels:["Iuran","Pengeluaran","Kas"],
-datasets:[{
-label:"Keuangan",
-data:[0,0,0],
-backgroundColor:["#16a34a","#dc2626","#2563eb"]
-}]
-}
-})
-
-}
-
-</script>
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-
-<div id="toastSukses" class="toast text-bg-success border-0">
-
-<div class="d-flex">
-
-<div class="toast-body">
-Masukan berhasil dikirim 👍
-</div>
-
-<button class="btn-close btn-close-white me-2 m-auto"
-data-bs-dismiss="toast"></button>
-
-</div>
-
-</div>
-
-</div>
-
-  <!-- MODAL DAFTAR KOMPLAIN -->
-
-<div class="modal fade" id="modalKomplainList">
-<div class="modal-dialog modal-lg modal-dialog-centered">
-<div class="modal-content">
-
-<div class="modal-header">
-<h5>Daftar Komplain Warga</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body">
-
-<table class="table table-striped">
-
-<thead>
-<tr>
-<th>Nama</th>
-<th>Blok</th>
-<th>Rumah</th>
-<th>No HP</th>
-<th>Isi Komplain</th>
-</tr>
-</thead>
-
-<tbody id="tabelKomplain">
-
-<tr>
-<td colspan="5" class="text-center">Belum ada komplain</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-</div>
-</div>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="app.js"></script>
 </body>
 </html>
