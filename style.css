@@ -1,20 +1,20 @@
 body{
-background:#f3f5f8;
+background:#f2f5f9;
 font-family:Arial;
 }
 
 .header{
-display:flex;
-justify-content:space-between;
-align-items:center;
 background:#0d6efd;
 color:white;
 padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
 .logo{
-font-weight:bold;
 font-size:18px;
+font-weight:bold;
 }
 
 .hamburger{
@@ -26,18 +26,23 @@ font-size:24px;
 
 .sideMenu{
 position:fixed;
-right:-300px;
 top:0;
-width:300px;
+right:-320px;
+width:320px;
 height:100%;
 background:white;
 padding:20px;
 transition:0.3s;
-box-shadow:-3px 0 10px rgba(0,0,0,0.2);
+box-shadow:-4px 0 10px rgba(0,0,0,0.2);
 }
 
 .sideMenu.open{
 right:0;
+}
+
+.dashboardCard{
+padding:20px;
+text-align:center;
 }
 
 .popup{
@@ -53,9 +58,9 @@ background:rgba(0,0,0,0.6);
 .popupContent{
 background:white;
 padding:20px;
-width:300px;
-margin:100px auto;
 border-radius:10px;
+width:320px;
+margin:120px auto;
 }
 
 .actionButtons{
@@ -66,5 +71,5 @@ flex-wrap:wrap;
 }
 
 #rumahBelumBayar span{
-margin:3px;
+margin:4px;
 }
