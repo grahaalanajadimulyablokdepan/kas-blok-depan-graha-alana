@@ -22,12 +22,14 @@
 
 <body>
 
-<!-- HEADER -->
+<!-- HEADER MEWAH -->
 
 <header class="header">
 
 <div class="logo">
+
 🏡 KAS GRAHA ALANA BLOK DEPAN
+
 </div>
 
 <button class="hamburger" onclick="toggleMenu()">
@@ -42,15 +44,17 @@
 
 <h4>Graha Alana</h4>
 
-<button onclick="showPopup('visiPopup')">Visi & Misi</button>
-<button onclick="showPopup('fasilitasPopup')">Fasilitas</button>
-<button onclick="showPopup('keamananPopup')">Sistem Keamanan</button>
-<button onclick="showPopup('peraturanPopup')">Peraturan</button>
-<button onclick="showPopup('pengumumanPopup')">Pengumuman</button>
-<button onclick="showPopup('kontakPopup')">Kontak Pengurus</button>
+<button onclick="openInfo('visi')">Visi & Misi</button>
+<button onclick="openInfo('fasilitas')">Fasilitas</button>
+<button onclick="openInfo('keamanan')">Sistem Keamanan</button>
+<button onclick="openInfo('peraturan')">Peraturan Warga</button>
+<button onclick="openInfo('pengumuman')">Pengumuman</button>
+<button onclick="openInfo('kontak')">Kontak Pengurus</button>
+
+<hr>
 
 <button onclick="showPopup('komplainPopup')">Komplain Warga</button>
-<button onclick="showPopup('listKomplainPopup')">Daftar Komplain</button>
+<button onclick="showPopup('daftarKomplainPopup')">Daftar Komplain</button>
 
 </div>
 
@@ -61,34 +65,33 @@
 <div class="row g-3">
 
 <div class="col-md-4">
-<div class="card">
-<div class="card-body text-center">
+<div class="card dashboardCard">
+
 <h5>Total Iuran</h5>
 <h3 id="totalIuran">Rp0</h3>
-</div>
+
 </div>
 </div>
 
 <div class="col-md-4">
-<div class="card">
-<div class="card-body text-center">
+<div class="card dashboardCard">
+
 <h5>Total Pengeluaran</h5>
 <h3 id="totalKeluar">Rp0</h3>
-</div>
+
 </div>
 </div>
 
 <div class="col-md-4">
-<div class="card">
-<div class="card-body text-center">
+<div class="card dashboardCard">
+
 <h5>Total Kas</h5>
 <h3 id="totalKas">Rp0</h3>
 
-<button class="btn btn-sm btn-dark mt-2" onclick="detailKas()">
+<button onclick="showPopup('detailKasPopup')">
 Detail Kas
 </button>
 
-</div>
 </div>
 </div>
 
@@ -136,15 +139,15 @@ Detail Kas
 
 </div>
 
-<!-- BUTTON ACTION -->
+<!-- ACTION BUTTON -->
 
 <div class="actionButtons">
 
-<button onclick="showPopup('loginAdmin')">
+<button onclick="showPopup('loginAdminPopup')">
 Login Admin
 </button>
 
-<button onclick="showPopup('loginWarga')">
+<button onclick="showPopup('loginWargaPopup')">
 Login Warga
 </button>
 
@@ -166,7 +169,7 @@ Export Excel
 
 <!-- POPUP LOGIN ADMIN -->
 
-<div class="popup" id="loginAdmin">
+<div class="popup" id="loginAdminPopup">
 
 <div class="popupContent">
 
@@ -183,7 +186,7 @@ Export Excel
 
 <!-- POPUP LOGIN WARGA -->
 
-<div class="popup" id="loginWarga">
+<div class="popup" id="loginWargaPopup">
 
 <div class="popupContent">
 
@@ -208,6 +211,7 @@ Export Excel
 <h4>Input Iuran</h4>
 
 <input id="namaIuran" placeholder="Nama">
+
 <select id="blokIuran"></select>
 <select id="rumahIuran"></select>
 
