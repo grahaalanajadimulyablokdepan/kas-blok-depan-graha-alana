@@ -242,39 +242,11 @@ bar.style.width=persen+"%"
 bar.innerText=persen+"%"
 }
 
-
-
 })
 
 })
 
 }
-
-
-
-function generateBelumBayar(rumahBayar){
-
-let html=""
-
-for(let blok in blokData){
-
-for(let i=1;i<=blokData[blok];i++){
-
-let kode=blok+"-"+i
-
-if(!rumahBayar.includes(kode)){
-html+=`<div>${kode}</div>`
-}
-
-}
-
-}
-
-let el=document.getElementById("rumahBelumBayar")
-if(el) el.innerHTML=html
-
-}
-
 
 
 function exportExcel(){
@@ -288,7 +260,6 @@ XLSX.writeFile(wb,"laporan-kas.xlsx")
 }
 
 
-
 const blokData={
 "A1":20,
 "A2":24,
@@ -297,7 +268,6 @@ const blokData={
 "B2":20,
 "B3":20
 }
-
 
 
 function generateMap(){
