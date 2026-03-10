@@ -105,8 +105,7 @@ let d=doc.data()
 d.id=doc.id
 
 totalIuran+=Number(d.jumlah)
-rumahBayar.push(d.blok+"-"+String(d.rumah).padStart(2,"0"))
-
+rumahBayar.push(d.blok+"-"+d.rumah)
 dataIuran.push(d)
 })
 
