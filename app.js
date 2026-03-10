@@ -678,7 +678,7 @@ function updateChart(iuran,keluar){
 
 let kas=iuran-keluar
 
-let ctx=document.getElementById("chartKas")
+681 let ctx=document.getElementById("chartKas").getContext("2d")
 
 if(!ctx) return
 
