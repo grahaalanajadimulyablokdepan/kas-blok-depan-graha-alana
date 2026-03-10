@@ -105,7 +105,7 @@ let d=doc.data()
 d.id=doc.id
 
 totalIuran+=Number(d.jumlah)
-rumahBayar.push(d.blok+"-"+d.rumah)
+rumahBayar.push(d.blok+"-"+String(d.rumah).padStart(2,"0"))
 dataIuran.push(d)
 })
 
@@ -311,7 +311,11 @@ html+=`<div class="blok">
 
 for(let i=1;i<=blokData[blok];i++){
 
-html+=`<div id="${blok}-${i}" class="rumah belum" onclick="bukaRumah('${blok}-${i}')">${blok}-${i}</div>`
+let kode = blok+"-"+String(i).padStart(2,"0")
+
+html+=`<div id="${kode}" class="rumah belum"
+onclick="bukaRumah('${kode}')">${kode}</div>`
+
 }
 
 html+=`</div></div>`
