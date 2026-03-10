@@ -192,7 +192,6 @@ if(detailKeluar2) detailKeluar2.innerText=rupiah(totalKeluar)
 
 let totalKeluarDetail=document.getElementById("totalKeluarDetail")
 if(totalKeluarDetail) totalKeluarDetail.innerText=rupiah(totalKeluar)
-if(detailKeluar) detailKeluar.innerText=rupiah(totalKeluar)
 
 updateMap(rumahBayar)
 
@@ -723,3 +722,5 @@ backgroundColor:[
 }
 })
 }
+
+document.addEventListener("DOMContentLoaded", loadData)
