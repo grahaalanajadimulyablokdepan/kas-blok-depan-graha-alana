@@ -500,7 +500,7 @@ html += `
 <td>${d.blok}</td>
 <td>${d.rumah}</td>
 <td>${d.tanggal}/${d.bulan}/${d.tahun}</td>
-<td>${rupiah(d.nominal)}</td>
+<td>${rupiah(d.jumlah)}</td>
 
 <td>
 
@@ -561,7 +561,7 @@ html += `
 
 <td>${d.tanggal}/${d.bulan}/${d.tahun}</td>
 <td>${d.ket}</td>
-<td>${rupiah(d.nominal)}</td>
+<td>${rupiah(d.jumlah)}</td>
 
 <td>
 
@@ -822,7 +822,7 @@ html+=`
 
 <td>${d.nama}</td>
 <td>${d.tanggal}/${d.bulan}/${d.tahun}</td>
-<td>${rupiah(d.nominal)}</td>
+<td>${rupiah(d.jumlah)}</td>
 
 </tr>
 
@@ -1320,7 +1320,7 @@ html+=`
 <td>${d.blok}</td>
 <td>${d.rumah}</td>
 <td>${d.tanggal}/${d.bulan}/${d.tahun}</td>
-<td>${rupiah(d.nominal)}</td>
+<td>${rupiah(d.jumlah)}</td>
 
 </tr>
 
@@ -1382,7 +1382,7 @@ html+=`
 
 <td>${d.tanggal}/${d.bulan}/${d.tahun}</td>
 <td>${d.ket}</td>
-<td>${rupiah(d.nominal)}</td>
+<td>${rupiah(d.jumlah)}</td>
 
 </tr>
 
@@ -2795,7 +2795,7 @@ html+=`
 
 <td>${d.nama}</td>
 <td>${d.tanggal}/${d.bulan}/${d.tahun}</td>
-<td>${rupiah(d.nominal)}</td>
+<td>${rupiah(d.jumlah)}</td>
 
 </tr>
 
@@ -3180,7 +3180,7 @@ let d=change.doc.data()
 
 createNotif(
 
-"Pengeluaran kas: "+rupiah(d.nominal),
+"Pengeluaran kas: "+rupiah(d.jumlah),
 
 "notif-keluar"
 
