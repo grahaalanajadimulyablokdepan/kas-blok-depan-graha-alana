@@ -698,6 +698,8 @@ document.getElementById("rumahBelumBayar").innerHTML=html
 
 }
 
+let chartKas=null
+
 function updateChart(iuran,keluar){
 
 let kas=iuran-keluar
@@ -706,7 +708,11 @@ let ctx=document.getElementById("chartKas")
 
 if(!ctx) return
 
-new Chart(ctx,{
+if(chartKas){
+chartKas.destroy()
+}
+
+chartKas=new Chart(ctx,{
 type:"bar",
 data:{
 labels:["Iuran","Pengeluaran","Kas"],
@@ -721,6 +727,7 @@ backgroundColor:[
 }]
 }
 })
+
 }
 
 document.addEventListener("DOMContentLoaded", loadData)
