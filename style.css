@@ -1037,21 +1037,17 @@ TABLE STYLE
 ========================= */
 
 table{
-
-color:white;
-
+color:#000;
+background:white;
 }
 
 table th{
-
-background:#1e293b;
-
+background:#f1f1f1;
+color:#000;
 }
 
 table td{
-
-background:#020617;
-
+color:#000;
 }
 
 
