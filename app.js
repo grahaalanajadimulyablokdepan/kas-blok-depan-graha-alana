@@ -4312,3 +4312,9 @@ window.addEventListener("DOMContentLoaded",()=>{
 initMaintenanceEngine()
 
 })
+
+window.onclick=function(e){
+if(e.target.classList.contains("popup")){
+e.target.style.display="none"
+}
+}
