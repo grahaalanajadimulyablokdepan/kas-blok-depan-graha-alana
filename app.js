@@ -90,15 +90,11 @@ alert("Pengeluaran berhasil disimpan")
 
 }
 
-
-
 function loadData(){
 
 let totalIuran=0
 let totalKeluar=0
 let rumahBayar=[]
-
-
 
 db.collection("iuran").get().then(s=>{
 
@@ -154,14 +150,6 @@ if(totalIuranEl) totalIuranEl.innerText=rupiah(totalIuran)
 document.getElementById("detailIuran").innerText = rupiah(totalIuran)
 document.getElementById("detailIuran2").innerText = rupiah(totalIuran)
 
-let kas = totalIuran - totalKeluar
-document.getElementById("detailKas").innerText = rupiah(kas)
-document.getElementById("detailKas2").innerText = rupiah(kas)
-  
-generateBelumBayar(rumahBayar)
-
-  updateChart(totalIuran,totalKeluar)
-
 db.collection("pengeluaran").get().then(p=>{
 
 let htmlKeluar=""
@@ -186,16 +174,15 @@ if(tabelKeluar) tabelKeluar.innerHTML=htmlKeluar
 
 let totalKeluarEl=document.getElementById("totalKeluar")
 if(totalKeluarEl) totalKeluarEl.innerText=rupiah(totalKeluar)
+let kas = totalIuran - totalKeluar
 
+let totalKasEl=document.getElementById("totalKas")
+if(totalKasEl) totalKasEl.innerText = rupiah(kas)
 
+document.getElementById("detailKas").innerText = rupiah(kas)
+document.getElementById("detailKas2").innerText = rupiah(kas)
 
-let kas=totalIuran-totalKeluar
-
-let kasEl=document.getElementById("totalKas")
-if(kasEl) kasEl.innerText=rupiah(kas)
-
-let detailIuran2=document.getElementById("detailIuran2")
-if(detailIuran2) detailIuran2.innerText=rupiah(totalIuran)
+updateChart(totalIuran,totalKeluar)
 
 let totalIuranDetail=document.getElementById("totalIuranDetail")
 if(totalIuranDetail) totalIuranDetail.innerText=rupiah(totalIuran)
@@ -206,9 +193,6 @@ if(detailKeluar2) detailKeluar2.innerText=rupiah(totalKeluar)
 let totalKeluarDetail=document.getElementById("totalKeluarDetail")
 if(totalKeluarDetail) totalKeluarDetail.innerText=rupiah(totalKeluar)
 if(detailKeluar) detailKeluar.innerText=rupiah(totalKeluar)
-
-let detailKas=document.getElementById("detailKas")
-if(detailKas) detailKas.innerText=rupiah(kas)
 
 updateMap(rumahBayar)
 
