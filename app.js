@@ -355,7 +355,25 @@ setTimeout(()=>{
 hideLoader()
 
 },1000)
+document.addEventListener("DOMContentLoaded", function(){
 
+let popups = document.querySelectorAll(".popup")
+
+popups.forEach(popup=>{
+
+let btn = document.createElement("span")
+btn.innerHTML="✖"
+btn.className="popupClose"
+
+btn.onclick=function(){
+popup.style.display="none"
+}
+
+popup.prepend(btn)
+
+})
+
+})
 }
 
 
