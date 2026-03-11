@@ -4,16 +4,16 @@ APP ENGINE PART 1
 ========================= */
 
 
-// ================================
-// ADMIN MODE SYSTEM
-// ================================
+/* =========================
+ADMIN MODE SYSTEM
+========================= */
 
 let isAdmin = false
 
 function loginAdmin(){
 
-let user = document.getElementById("adminUser").value
-let pass = document.getElementById("adminPass").value
+let user = document.getElementById("adminUser")?.value
+let pass = document.getElementById("adminPass")?.value
 
 if(user === "admin" && pass === "12345"){
 
@@ -23,13 +23,19 @@ localStorage.setItem("adminLogin","true")
 
 document.body.classList.add("admin-mode")
 
+if(typeof closePopup === "function"){
 closePopup()
+}
 
+if(typeof notif === "function"){
 notif("Admin login berhasil")
+}
 
 }else{
 
+if(typeof notif === "function"){
 notif("Username / Password salah")
+}
 
 }
 
@@ -47,7 +53,7 @@ document.body.classList.add("admin-mode")
 
 }
 
-checkAdmin()
+window.addEventListener("load",checkAdmin)
 
 /* =========================
 GLOBAL VARIABLE
