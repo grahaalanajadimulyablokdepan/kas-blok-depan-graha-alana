@@ -520,7 +520,7 @@ tanggal:tanggal,
 bulan:bulan,
 tahun:tahun,
 ket:ket,
-nominal:Number(nominal)
+nominal:Number(nominal),
 created:new Date()
 
 })
