@@ -1224,3 +1224,13 @@ body{
 font-family:'Segoe UI',Roboto,Arial,sans-serif;
 letter-spacing:0.3px;
 }
+
+/* tombol hapus hanya untuk admin */
+
+button.hapusBtn{
+display:none;
+}
+
+.admin-mode button.hapusBtn{
+display:inline-block;
+}
