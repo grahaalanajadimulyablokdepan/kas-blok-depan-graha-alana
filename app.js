@@ -4397,3 +4397,23 @@ requestAnimationFrame(update)
 update()
 
 }
+
+/* =========================
+   SIDE MENU CONTROL
+========================= */
+
+function toggleMenu(){
+
+let menu = document.getElementById("sideMenu")
+
+if(menu.classList.contains("open")){
+menu.classList.remove("open")
+}else{
+menu.classList.add("open")
+}
+
+}
+
+function closeMenu(){
+document.getElementById("sideMenu").classList.remove("open")
+}
