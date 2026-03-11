@@ -4,6 +4,51 @@ APP ENGINE PART 1
 ========================= */
 
 
+// ================================
+// ADMIN MODE SYSTEM
+// ================================
+
+let isAdmin = false
+
+function loginAdmin(){
+
+let user = document.getElementById("adminUser").value
+let pass = document.getElementById("adminPass").value
+
+if(user === "admin" && pass === "12345"){
+
+isAdmin = true
+
+localStorage.setItem("adminLogin","true")
+
+document.body.classList.add("admin-mode")
+
+closePopup()
+
+notif("Admin login berhasil")
+
+}else{
+
+notif("Username / Password salah")
+
+}
+
+}
+
+function checkAdmin(){
+
+if(localStorage.getItem("adminLogin") === "true"){
+
+isAdmin = true
+
+document.body.classList.add("admin-mode")
+
+}
+
+}
+
+checkAdmin()
+
 /* =========================
 GLOBAL VARIABLE
 ========================= */
