@@ -661,7 +661,7 @@ let kas=iuran-keluar
 
 let elKas=document.getElementById("totalKas")
 
-if(elKas) elKas.innerText=rupiah(kas)
+if(elKas) animateNumber("totalKas",kas)
 
 updateChart(iuran,keluar)
 
