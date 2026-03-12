@@ -4407,13 +4407,16 @@ function toggleMenu(){
 
 let menu = document.getElementById("sideMenu")
 let overlay = document.getElementById("menuOverlay")
+let burger = document.querySelector(".hamburger")
 
 if(menu.style.right === "0px"){
 menu.style.right = "-320px"
 overlay.style.display="none"
+burger.classList.remove("active")
 }else{
 menu.style.right = "0px"
 overlay.style.display="block"
+burger.classList.add("active")
 }
 
 }
