@@ -4532,3 +4532,15 @@ el.innerText = "Rp" + target.toLocaleString("id-ID")
 update()
 
 }
+
+function cekAdmin(){
+
+let admin = localStorage.getItem("adminLogin")
+
+if(admin !== "true"){
+alert("Hanya admin yang bisa melakukan ini")
+return false
+}
+
+return true
+}
