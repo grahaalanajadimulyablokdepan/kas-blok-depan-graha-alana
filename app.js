@@ -4579,3 +4579,30 @@ logoutBtn.style.display = "none"
 
 }
 window.addEventListener("load", updateAdminButtons)
+
+function loginGate(){
+
+let user = document.getElementById("loginUser").value
+let pass = document.getElementById("loginPass").value
+
+if(user === "warga" && pass === "12345"){
+
+localStorage.setItem("gateLogin","true")
+
+document.getElementById("loginGate").style.display = "none"
+
+}else{
+
+alert("Login gagal")
+
+}
+
+}
+
+window.addEventListener("load",()=>{
+
+if(localStorage.getItem("gateLogin") === "true"){
+document.getElementById("loginGate").style.display = "none"
+}
+
+})
