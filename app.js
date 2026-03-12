@@ -4663,8 +4663,6 @@ btnPengeluaran.style.display = "none"
 
 }
 
-window.addEventListener("load", kontrolMenu)
-
 function tampilUser(){
 
 let admin = localStorage.getItem("adminLogin")
