@@ -4664,3 +4664,23 @@ btnPengeluaran.style.display = "none"
 }
 
 window.addEventListener("load", kontrolMenu)
+
+function tampilUser(){
+
+let admin = localStorage.getItem("adminLogin")
+let blok = localStorage.getItem("wargaBlok")
+let rumah = localStorage.getItem("wargaRumah")
+
+let userInfo = document.getElementById("userInfo")
+
+if(admin === "true"){
+
+userInfo.innerText = "Admin"
+
+}else if(blok && rumah){
+
+userInfo.innerText = blok + rumah
+
+}
+
+}
