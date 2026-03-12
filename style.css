@@ -96,7 +96,7 @@ height:100vh;
 
 background:#020617;
 
-transition:0.4s;
+transition:0.35s cubic-bezier(.25,.8,.25,1);
 
 z-index:999;
 
@@ -1246,4 +1246,22 @@ display:none;
 
 .admin-mode .hapusBtn{
 display:inline-block;
+}
+
+.menuBody button{
+width:100%;
+padding:12px;
+margin:6px 0;
+background:#1e293b;
+border:none;
+color:white;
+border-radius:6px;
+cursor:pointer;
+transition:0.25s;
+}
+
+.menuBody button:hover{
+background:#2563eb;
+transform:translateX(6px);
+box-shadow:0 0 12px rgba(37,99,235,0.6);
 }
