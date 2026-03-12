@@ -4585,15 +4585,23 @@ function loginGate(){
 let user = document.getElementById("loginUser").value
 let pass = document.getElementById("loginPass").value
 
-if(user === "warga" && pass === "12345"){
+if(user === "admin" && pass === "12345"){
 
-localStorage.setItem("gateLogin","true")
+localStorage.setItem("adminLogin","true")
+localStorage.setItem("wargaLogin","false")
+
+document.getElementById("loginGate").style.display = "none"
+
+}else if(user === "warga" && pass === "12345"){
+
+localStorage.setItem("wargaLogin","true")
+localStorage.setItem("adminLogin","false")
 
 document.getElementById("loginGate").style.display = "none"
 
 }else{
 
-alert("Login gagal")
+alert("Username atau password salah")
 
 }
 
