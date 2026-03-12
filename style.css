@@ -148,7 +148,8 @@ padding:20px;
 display:flex;
 flex-direction:column;
 gap:10px;
-
+overflow-y:auto;
+max-height:calc(100vh - 120px);
 }
 
 .menuBody button{
