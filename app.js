@@ -4684,3 +4684,24 @@ userInfo.innerText = blok + rumah
 }
 
 }
+
+window.addEventListener("load", tampilUser)
+
+function animasiGrafik(){
+
+let chart = document.getElementById("kasChart")
+
+if(chart){
+
+chart.style.opacity = "0"
+
+setTimeout(()=>{
+chart.style.transition = "opacity 1s"
+chart.style.opacity = "1"
+},200)
+
+}
+
+}
+
+window.addEventListener("load", animasiGrafik)
