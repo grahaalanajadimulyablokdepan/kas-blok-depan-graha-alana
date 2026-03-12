@@ -1319,3 +1319,52 @@ box-shadow:0 15px 35px rgba(0,0,0,0.4);
 .hamburger:hover{
 background:rgba(255,255,255,0.2);
 }
+
+#loginGate{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#0b1220;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.loginBox{
+width:380px;
+background:#111c35;
+padding:35px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 0 25px rgba(0,0,0,0.6);
+}
+
+.loginBox h2{
+margin-bottom:10px;
+}
+
+.loginBox p{
+font-size:14px;
+opacity:.8;
+margin-bottom:15px;
+}
+
+.loginBox input{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:none;
+border-radius:6px;
+}
+
+.loginBox button{
+width:100%;
+padding:10px;
+background:#2dd4bf;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
