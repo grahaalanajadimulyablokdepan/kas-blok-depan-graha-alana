@@ -4559,3 +4559,18 @@ alert("Admin logout")
 location.reload()
 
 }
+
+function updateAdminButtons(){
+
+let loginBtn = document.getElementById("btnLoginAdmin")
+let logoutBtn = document.getElementById("btnLogoutAdmin")
+
+if(isAdmin){
+loginBtn.style.display = "none"
+logoutBtn.style.display = "inline-block"
+}else{
+loginBtn.style.display = "inline-block"
+logoutBtn.style.display = "none"
+}
+
+}
