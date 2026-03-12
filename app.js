@@ -23,6 +23,8 @@ localStorage.setItem("adminLogin","true")
 
 document.body.classList.add("admin-mode")
 
+ updateAdminButtons()
+   
 if(typeof closePopup === "function"){
 closePopup()
 }
@@ -1650,6 +1652,8 @@ function logoutAdmin(){
 
 localStorage.removeItem("loginAdmin")
 
+updateAdminButtons()
+   
 notif("Admin logout")
 
 setTimeout(()=>{
@@ -4574,3 +4578,4 @@ logoutBtn.style.display = "none"
 }
 
 }
+window.addEventListener("load", updateAdminButtons)
