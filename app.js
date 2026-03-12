@@ -4544,3 +4544,18 @@ return false
 
 return true
 }
+
+
+function logoutAdmin(){
+
+isAdmin = false
+
+localStorage.removeItem("adminLogin")
+
+document.body.classList.remove("admin-mode")
+
+alert("Admin logout")
+
+location.reload()
+
+}
