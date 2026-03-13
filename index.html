@@ -288,10 +288,14 @@ Detail
 <button onclick="logoutSystem()">Logout</button>
 
 <button id="btnIuran"
-onclick="if(localStorage.getItem('adminLogin')==='true'){showPopup('iuranPopup')}">
+onclick="if(cekAdmin()){ showPopup('iuranPopup'); }">
+Input Iuran
+</button>
 
 <button id="btnPengeluaran"
-onclick="if(localStorage.getItem('adminLogin')==='true'){showPopup('pengeluaranPopup')}">
+onclick="if(cekAdmin()){ showPopup('pengeluaranPopup'); }">
+Input Pengeluaran
+</button>
 
 <button id="btnExport" onclick="exportExcel()">
 Export Excel
