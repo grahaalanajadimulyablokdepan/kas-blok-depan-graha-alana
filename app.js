@@ -4608,15 +4608,24 @@ alert("Login gagal")
 }
 /* LOGIN ADMIN */
 
+function loginGate(){
+
+let blok = document.getElementById("loginBlok").value
+let rumah = document.getElementById("loginRumah").value
+let pass = document.getElementById("loginPass").value
+
+/* LOGIN ADMIN */
+
 if(blok === "admin" && pass === "12345"){
 
 localStorage.setItem("adminLogin","true")
 
 document.getElementById("loginGate").style.display="none"
 document.getElementById("loginPanel").style.display="none"
-location.reload()
-return
 
+location.reload()
+
+return
 }
 
 /* LOGIN WARGA */
@@ -4636,7 +4645,6 @@ alert("Login gagal")
 }
 
 }
-
 window.addEventListener("load",()=>{
 
 if(localStorage.getItem("gateLogin") === "true"){
