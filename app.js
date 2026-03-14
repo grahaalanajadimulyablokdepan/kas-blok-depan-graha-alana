@@ -4751,3 +4751,13 @@ localStorage.clear()
 location.href="index.html"
 
 }
+
+document.addEventListener("DOMContentLoaded", function(){
+
+let blok = document.getElementById("loginBlok")
+
+if(blok){
+blok.addEventListener("change", generateNomorRumah)
+}
+
+})
