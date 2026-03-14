@@ -1537,3 +1537,14 @@ box-shadow:0 6px 15px rgba(0,0,0,0.3);
 .dashboard{
 display:none;
 }
+
+select{
+background:#1e293b;
+color:white;
+border:1px solid #334155;
+}
+
+select option{
+background:#1e293b;
+color:white;
+}
