@@ -165,56 +165,36 @@ loader.style.display="none"
 LOGIN ADMIN
 ========================= */
 
-function loginAdmin(){
+function loginGate(){
 
-let user=document.getElementById("adminUser").value
-let pass=document.getElementById("adminPass").value
+if(blok === "admin" && pass === "12345"){
 
-if(user==="admin" && pass==="12345"){
+localStorage.setItem("adminLogin","true")
 
-localStorage.setItem("loginAdmin","true")
+document.getElementById("loginGate").style.display="none"
+document.getElementById("loginPanel").style.display="none"
 
-notif("Login Admin Berhasil")
-
-closePopup()
-
-}
-else{
-
-notif("Login Admin Gagal")
-
-}
-
-}
-
-
-/* =========================
-LOGIN WARGA
-========================= */
-
-function loginWarga(){
-
-let nama=document.getElementById("wargaNama").value
-let blok=document.getElementById("wargaBlok").value
-let rumah=document.getElementById("wargaRumah").value
-
-if(!nama || !rumah){
-
-notif("Isi data login warga")
+location.reload()
 
 return
 
 }
 
-localStorage.setItem("loginWarga","true")
+/* LOGIN WARGA */
 
-localStorage.setItem("namaWarga",nama)
-localStorage.setItem("blokWarga",blok)
-localStorage.setItem("rumahWarga",rumah)
+if(blok !== "" && rumah !== "" && pass === "12345"){
 
-notif("Login warga berhasil")
+localStorage.setItem("wargaLogin","true")
+localStorage.setItem("wargaBlok",blok)
+localStorage.setItem("wargaRumah",rumah)
 
-closePopup()
+document.getElementById("loginGate").style.display="none"
+
+}else{
+
+alert("Login gagal")
+
+}
 
 }
 
