@@ -252,7 +252,8 @@ function generateNomorRumah(){
 let blok = document.getElementById("loginBlok").value
 let rumahSelect = document.getElementById("loginRumah")
 
-rumahSelect.innerHTML = ""
+// reset isi
+rumahSelect.innerHTML = '<option value="">Pilih Nomor Rumah</option>'
 
 let max = 0
 
@@ -263,9 +264,10 @@ if(blok === "B1") max = 20
 if(blok === "B2") max = 20
 if(blok === "B3") max = 20
 
-for(let i=1;i<=max;i++){
+for(let i = 1; i <= max; i++){
 
 let option = document.createElement("option")
+
 option.value = i
 option.text = i
 
