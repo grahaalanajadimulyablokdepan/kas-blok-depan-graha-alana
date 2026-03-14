@@ -4593,7 +4593,8 @@ if(blok === "admin" && pass === "12345"){
 localStorage.setItem("adminLogin","true")
 
 document.getElementById("loginGate").style.display="none"
-
+document.getElementById("loginPanel").style.display="none"
+location.reload()
 return
 
 }
