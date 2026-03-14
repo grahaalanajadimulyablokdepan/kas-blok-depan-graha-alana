@@ -4725,27 +4725,6 @@ chart.style.opacity = "1"
 
 window.addEventListener("load", animasiGrafik)
 
-function generateNomorRumah(){
-
-let blok = document.getElementById("loginBlok").value
-let rumahInput = document.getElementById("loginRumah")
-
-let max = 0
-
-if(blok === "A1") max = 18
-if(blok === "A2") max = 24
-if(blok === "A3") max = 10
-if(blok === "B1") max = 20
-if(blok === "B2") max = 20
-if(blok === "B3") max = 20
-
-rumahInput.type = "number"
-rumahInput.min = 1
-rumahInput.max = max
-rumahInput.placeholder = "1 - " + max
-
-}
-
 function loginAdminMode(){
 
 let pass = prompt("Masukkan password admin")
