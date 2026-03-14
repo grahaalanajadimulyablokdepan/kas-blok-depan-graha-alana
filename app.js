@@ -4588,11 +4588,8 @@ let pass = document.getElementById("loginPass").value
 
 if(blok !== "" && rumah !== "" && pass === "12345"){
 
-localStorage.setItem("wargaLogin","true")
-localStorage.setItem("wargaBlok",blok)
-localStorage.setItem("wargaRumah",rumah)
-
-location.href = "dashboard.html"
+document.querySelector(".loginBox").style.display="none"
+document.querySelector(".dashboard").style.display="block"
 
 }else{
 
