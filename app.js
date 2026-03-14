@@ -430,6 +430,15 @@ hideLoader()
 },1000)
 document.addEventListener("DOMContentLoaded", function(){
 
+let blokSelect = document.getElementById("loginBlok")
+
+if(blokSelect){
+blokSelect.addEventListener("change", generateNomorRumah)
+}
+
+})
+document.addEventListener("DOMContentLoaded", function(){
+
 let popups = document.querySelectorAll(".popup")
 
 popups.forEach(popup=>{
