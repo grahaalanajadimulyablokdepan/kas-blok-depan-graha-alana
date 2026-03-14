@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Dashboard Kas Graha Alana</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<h1>Dashboard Kas Graha Alana</h1>
+
+<button onclick="logout()">Logout</button>
+
+<div id="dashboardContent">
+
+<h2>Grafik Kas Lingkungan</h2>
+<div id="grafikKas"></div>
+
+<h2>Statistik Pembayaran Blok</h2>
+<div id="statistikBlok"></div>
+
+<h2>Rumah Belum Bayar</h2>
+<div id="rumahBelumBayar"></div>
+
+<h2>Peta Blok Rumah</h2>
+<div id="mapPerumahan"></div>
+
+</div>
+
+<script src="app.js"></script>
+
+<script>
+
+if(!localStorage.getItem("wargaLogin") && !localStorage.getItem("adminLogin")){
+location.href="index.html"
+}
+
+</script>
+
+</body>
+
+</html>
