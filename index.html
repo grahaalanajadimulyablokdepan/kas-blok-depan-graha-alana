@@ -65,41 +65,6 @@ Login Admin
 
 </div>
   
-<!-- HEADER PREMIUM -->
-
-<header class="header">
-
-<div class="header-left">
-
-<button onclick="logoutSystem()" class="btnLogout">
-Logout
-</button>
-  
-<img src="logo.png" class="logo">
-
-<div class="header-title">
-
-<h4>KAS GRAHA ALANA</h4>
-<span>Blok Depan</span>
-
-</div>
-
-</div>
-
-<div class="header-right">
-
- <span id="userInfo"></span>
-  
-<button class="hamburger" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
-</button>
-
-</div>
-
-</header>
-
 <!-- SIDEMENU -->
 
 <div id="sideMenu" class="sideMenu">
@@ -156,6 +121,7 @@ Daftar Komplain
 
 </div>
 <div id="menuOverlay" onclick="toggleMenu()"></div>
+
 <!-- DASHBOARD -->
 
 <div class="container dashboard">
@@ -290,31 +256,7 @@ Detail
 
 </div>
 
-</div>
 
-<!-- ACTION BUTTON -->
-
-<div class="actionButtons">
-
-<button onclick="logoutSystem()">Logout</button>
-
-<button id="btnIuran"
-onclick="if(localStorage.getItem('adminLogin')==='true'){showPopup('iuranPopup')}else{alert('Hanya admin')}">
-Input Iuran
-</button>
-
-<button id="btnPengeluaran"
-onclick="if(localStorage.getItem('adminLogin')==='true'){showPopup('pengeluaranPopup')}else{alert('Hanya admin')}">
-Input Pengeluaran
-</button> 
-
-<button id="btnExport" onclick="exportExcel()">
-Export Excel
-</button>
-
-</div>
-
-</div>
 
 <!-- LOGIN ADMIN -->
 
