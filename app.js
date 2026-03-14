@@ -4588,24 +4588,7 @@ logoutBtn.style.display = "none"
 }
 window.addEventListener("load", updateAdminButtons)
 
-function loginGate(){
 
-let blok = document.getElementById("loginBlok").value
-let rumah = document.getElementById("loginRumah").value
-let pass = document.getElementById("loginPass").value
-
-if(blok !== "" && rumah !== "" && pass === "12345"){
-
-document.querySelector(".loginBox").style.display="none"
-document.querySelector(".dashboard").style.display="block"
-
-}else{
-
-alert("Login gagal")
-
-}
-
-}
 /* LOGIN ADMIN */
 
 function loginGate(){
