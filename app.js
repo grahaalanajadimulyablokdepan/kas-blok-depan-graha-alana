@@ -4655,11 +4655,11 @@ if(localStorage.getItem("gateLogin") === "true"){
 document.getElementById("loginGate").style.display = "none"
 }
 
-})
 let blok = localStorage.getItem("wargaBlok")
 let rumah = localStorage.getItem("wargaRumah")
-
 let pengirim = blok + rumah
+
+})
 
 function logoutSystem(){
 
