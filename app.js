@@ -452,7 +452,7 @@ popup.prepend(btn)
 LOAD PAGE
 ========================= */
 
-window.onload=function(){
+window.addEventListener("load", function(){
 
 initSystem()
 
