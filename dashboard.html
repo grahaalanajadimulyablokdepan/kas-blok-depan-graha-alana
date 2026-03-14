@@ -39,6 +39,32 @@ if(!localStorage.getItem("wargaLogin") && !localStorage.getItem("adminLogin")){
 location.href="index.html"
 }
 
+</div>
+
+<!-- ACTION BUTTON -->
+
+<div class="actionButtons">
+
+<button onclick="logoutSystem()">Logout</button>
+
+<button id="btnIuran"
+onclick="if(localStorage.getItem('adminLogin')==='true'){showPopup('iuranPopup')}else{alert('Hanya admin')}">
+Input Iuran
+</button>
+
+<button id="btnPengeluaran"
+onclick="if(localStorage.getItem('adminLogin')==='true'){showPopup('pengeluaranPopup')}else{alert('Hanya admin')}">
+Input Pengeluaran
+</button> 
+
+<button id="btnExport" onclick="exportExcel()">
+Export Excel
+</button>
+
+</div>
+
+</div>
+  
 </script>
 
 </body>
