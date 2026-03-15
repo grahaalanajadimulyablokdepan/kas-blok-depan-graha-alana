@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta charset="UTF-8">
 <title>Sistem Kas Graha Alana</title>
+
 <link rel="stylesheet" href="style.css">
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<script src="firebase.js"></script>
 
 </head>
 
-<body class="loginBody">
+<body class="loginPage">
 
 <div class="loginBox">
 
@@ -15,17 +21,19 @@
 
 <p>
 Selamat datang di sistem transparansi kas lingkungan  
-Graha Alana Blok Depan
+Graha Alana Blok Depan.
 </p>
 
-<select id="blok">
+<select id="blok" onchange="generateRumah()">
 <option value="">Pilih Blok</option>
+
 <option>A1</option>
 <option>A2</option>
 <option>A3</option>
 <option>B1</option>
 <option>B2</option>
 <option>B3</option>
+
 </select>
 
 <select id="rumah">
@@ -34,12 +42,12 @@ Graha Alana Blok Depan
 
 <input type="password" id="password" placeholder="Password">
 
-<button onclick="loginWarga()">Masuk Sistem</button>
+<button onclick="login()">Masuk Sistem</button>
+
 <button onclick="loginAdmin()">Login Admin</button>
 
 </div>
 
-<script src="firebase.js"></script>
 <script src="app.js"></script>
 
 </body>
