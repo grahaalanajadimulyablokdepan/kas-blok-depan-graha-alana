@@ -2,71 +2,77 @@
 <html>
 <head>
 
+<meta charset="UTF-8">
+
 <title>Dashboard Kas</title>
+
 <link rel="stylesheet" href="style.css">
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<script src="firebase.js"></script>
 
 </head>
 
-<body>
+<body onload="loadDashboard()">
 
 <header>
 
-<div class="logo">
-🏠 KAS BLOK DEPAN ALANA
+<div class="logoArea">
+
+<img src="logo.png">
+
+<h2>KAS BLOK DEPAN ALANA</h2>
+
 </div>
 
 <div class="menuBtn" onclick="toggleMenu()">☰</div>
 
 </header>
 
-
 <div id="sideMenu">
 
-<button onclick="openDashboard()">Dashboard</button>
+<button onclick="popupKontak()">Kontak Pengurus</button>
 
-<button id="menuIuran">Input Iuran</button>
-<button id="menuKeluar">Input Pengeluaran</button>
+<button onclick="popupKomplain()">Buat Komplain</button>
 
-<button onclick="exportExcel()">Export Excel</button>
+<button onclick="popupDaftarKomplain()">Daftar Komplain</button>
 
-<button onclick="openKontak()">Kontak Pengurus</button>
-
-<button onclick="openKomplain()">Buat Komplain</button>
-
-<button onclick="openDaftarKomplain()">Daftar Komplain</button>
+<button id="adminMenu" onclick="popupInput()">Input Iuran</button>
 
 <button onclick="logout()">Logout</button>
 
 </div>
-
 
 <div class="dashboard">
 
 <div class="card">
 
 <h3>Total Iuran</h3>
-<h2 id="totalIuran">Rp0</h2>
+
+<h1 id="totalIuran">Rp0</h1>
 
 </div>
 
 <div class="card">
 
 <h3>Total Pengeluaran</h3>
-<h2 id="totalKeluar">Rp0</h2>
+
+<h1 id="totalKeluar">Rp0</h1>
 
 </div>
 
 <div class="card">
 
 <h3>Total Kas</h3>
-<h2 id="totalKas">Rp0</h2>
+
+<h1 id="totalKas">Rp0</h1>
 
 </div>
 
 </div>
 
-
-<script src="firebase.js"></script>
 <script src="app.js"></script>
 
 </body>
