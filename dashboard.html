@@ -1,98 +1,72 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
-<title>Dashboard Kas Graha Alana</title>
-
+<title>Dashboard Kas</title>
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<!-- HEADER PREMIUM -->
+<header>
 
-<header class="header">
-
-<div class="header-left">
-
-<button onclick="logoutSystem()" class="btnLogout">
-Logout
-</button>
-  
-<img src="logo.png" class="logo">
-
-<div class="header-title">
-
-<h4>KAS GRAHA ALANA</h4>
-<span>Blok Depan</span>
-
+<div class="logo">
+🏠 KAS BLOK DEPAN ALANA
 </div>
 
-</div>
-
-<div class="header-right">
-
- <span id="userInfo"></span>
-  
-<button class="hamburger" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
-</button>
-
-</div>
+<div class="menuBtn" onclick="toggleMenu()">☰</div>
 
 </header>
-<div id="dashboardContent">
 
-<h2>Grafik Kas Lingkungan</h2>
-<div id="grafikKas"></div>
 
-<h2>Statistik Pembayaran Blok</h2>
-<div id="statistikBlok"></div>
+<div id="sideMenu">
 
-<h2>Rumah Belum Bayar</h2>
-<div id="rumahBelumBayar"></div>
+<button onclick="openDashboard()">Dashboard</button>
 
-<h2>Peta Blok Rumah</h2>
-<div id="mapPerumahan"></div>
+<button id="menuIuran">Input Iuran</button>
+<button id="menuKeluar">Input Pengeluaran</button>
 
-  <div class="actionButtons">
+<button onclick="exportExcel()">Export Excel</button>
 
-<button onclick="logoutSystem()">Logout</button>
+<button onclick="openKontak()">Kontak Pengurus</button>
 
-<button onclick="showPopup('iuranPopup')">
-Input Iuran
-</button>
+<button onclick="openKomplain()">Buat Komplain</button>
 
-<button onclick="showPopup('pengeluaranPopup')">
-Input Pengeluaran
-</button>
+<button onclick="openDaftarKomplain()">Daftar Komplain</button>
 
-<button onclick="exportExcel()">
-Export Excel
-</button>
+<button onclick="logout()">Logout</button>
 
 </div>
+
+
+<div class="dashboard">
+
+<div class="card">
+
+<h3>Total Iuran</h3>
+<h2 id="totalIuran">Rp0</h2>
+
 </div>
-  
+
+<div class="card">
+
+<h3>Total Pengeluaran</h3>
+<h2 id="totalKeluar">Rp0</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Total Kas</h3>
+<h2 id="totalKas">Rp0</h2>
+
+</div>
+
+</div>
+
 
 <script src="app.js"></script>
 
-<script>
-
-if(!localStorage.getItem("wargaLogin") && !localStorage.getItem("adminLogin")){
-location.href="index.html"
-}
-
-</div>
-
-</div>
-  
-</script>
-
 </body>
-
 </html>
