@@ -1,31 +1,35 @@
 let db = firebase.firestore()
 
+let blokSelect = document.getElementById("blok")
+let rumahSelect = document.getElementById("rumah")
+
+blokSelect.addEventListener("change", generateRumah)
+
 function generateRumah(){
 
-let blok=document.getElementById("blok").value
-let rumah=document.getElementById("rumah")
+let blok = blokSelect.value
 
-rumah.innerHTML=""
+rumahSelect.innerHTML = '<option value="">Pilih Nomor Rumah</option>'
 
 if(blok=="") return
 
-let jumlah=0
+let jumlah = 0
 
-if(blok=="A1") jumlah=18
-if(blok=="A2") jumlah=24
-if(blok=="A3") jumlah=10
-if(blok=="B1") jumlah=20
-if(blok=="B2") jumlah=20
-if(blok=="B3") jumlah=20
+if(blok=="A1") jumlah = 18
+if(blok=="A2") jumlah = 24
+if(blok=="A3") jumlah = 10
+if(blok=="B1") jumlah = 20
+if(blok=="B2") jumlah = 20
+if(blok=="B3") jumlah = 20
 
 for(let i=1;i<=jumlah;i++){
 
-let opt=document.createElement("option")
+let opt = document.createElement("option")
 
-opt.value=i
-opt.text="Rumah "+i
+opt.value = i
+opt.text = "Rumah " + i
 
-rumah.appendChild(opt)
+rumahSelect.appendChild(opt)
 
 }
 
@@ -62,6 +66,10 @@ if(pass=="12345"){
 localStorage.setItem("role","admin")
 
 location.href="dashboard.html"
+
+}else{
+
+alert("Password admin salah")
 
 }
 
