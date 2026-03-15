@@ -72,7 +72,82 @@
 </div>
 
 </div>
+  
+<!-- POPUP INPUT IURAN -->
+<div id="popupIuran" class="popup">
 
+<div class="popupContent">
+
+<h3>Input Iuran</h3>
+
+<select id="iuranBlok">
+<option>A1</option>
+<option>A2</option>
+<option>A3</option>
+<option>B1</option>
+<option>B2</option>
+<option>B3</option>
+</select>
+
+<input type="number" id="iuranRumah" placeholder="Nomor Rumah">
+
+<input type="number" id="jumlahIuran" placeholder="Jumlah">
+
+<button onclick="simpanIuran()">Simpan</button>
+
+<button onclick="closePopup('popupIuran')">Tutup</button>
+
+</div>
+
+</div>
+
+  <div id="popupKeluar" class="popup">
+
+<div class="popupContent">
+
+<h3>Input Pengeluaran</h3>
+
+<input id="ketKeluar" placeholder="Keterangan">
+
+<input id="jumlahKeluar" type="number" placeholder="Jumlah">
+
+<button onclick="simpanKeluar()">Simpan</button>
+
+<button onclick="closePopup('popupKeluar')">Tutup</button>
+
+</div>
+
+</div>
+
+  <div id="popupKomplain" class="popup">
+
+<div class="popupContent">
+
+<h3>Kirim Komplain</h3>
+
+<textarea id="pesanKomplain"></textarea>
+
+<button onclick="kirimKomplain()">Kirim</button>
+
+<button onclick="closePopup('popupKomplain')">Tutup</button>
+
+</div>
+
+</div>
+
+  <div id="popupDaftarKomplain" class="popup">
+
+<div class="popupContent">
+
+<h3>Daftar Komplain</h3>
+
+<div id="listKomplain"></div>
+
+<button onclick="closePopup('popupDaftarKomplain')">Tutup</button>
+
+</div>
+
+</div>
 <script src="app.js"></script>
 
 </body>
