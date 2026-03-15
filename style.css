@@ -1,6 +1,10 @@
+*{
+box-sizing:border-box;
+}
+
 body{
 margin:0;
-font-family:sans-serif;
+font-family:Arial, Helvetica, sans-serif;
 background:linear-gradient(135deg,#0b1b3a,#09122b);
 color:white;
 }
@@ -19,7 +23,11 @@ justify-content:space-between;
 
 padding:0 25px;
 
-box-sizing:border-box;
+position:fixed;
+top:0;
+left:0;
+
+z-index:1000;
 }
 
 .logoBox{
@@ -33,104 +41,29 @@ width:32px;
 }
 
 .hamburger{
-font-size:24px;
+font-size:26px;
 cursor:pointer;
 }
 
 /* MAIN */
 
 .mainContainer{
+margin-top:100px;
 display:flex;
 justify-content:center;
-margin-top:80px;
 }
 
 /* DASHBOARD */
 
 .dashboard{
 display:flex;
-gap:30px;
+gap:25px;
 flex-wrap:wrap;
 justify-content:center;
+padding:20px;
 }
 
 /* CARD */
-
-.card{
-width:220px;
-
-background:#1d2b4f;
-
-padding:25px;
-
-border-radius:10px;
-
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
-}
-
-.card h3{
-margin-top:0;
-}
-
-/* SIDEBAR */
-
-.sidebar{
-position:fixed;
-right:-260px;
-top:0;
-width:260px;
-height:100%;
-
-background:rgba(25,35,60,0.95);
-backdrop-filter:blur(10px);
-
-padding:25px;
-
-transition:0.35s;
-z-index:1000;
-
-box-shadow:-10px 0 30px rgba(0,0,0,0.5);
-}
-
-.sidebar.active{
-right:0;
-}
-
-.sidebar button{
-
-width:100%;
-padding:12px;
-margin:10px 0;
-
-border:none;
-border-radius:8px;
-
-background:linear-gradient(45deg,#2563eb,#3b82f6);
-
-color:white;
-font-weight:bold;
-
-cursor:pointer;
-transition:0.25s;
-
-}
-
-.sidebar button:hover{
-
-transform:translateY(-2px);
-box-shadow:0 5px 15px rgba(0,0,0,0.4);
-
-}
-
-/* DASHBOARD CARD */
-
-.dashboard{
-display:flex;
-justify-content:center;
-gap:25px;
-padding:40px;
-flex-wrap:wrap;
-}
 
 .card{
 
@@ -144,7 +77,8 @@ width:220px;
 
 box-shadow:0 10px 25px rgba(0,0,0,0.5);
 
-transition:0.3s;
+transition:0.25s;
+
 }
 
 .card:hover{
@@ -161,12 +95,78 @@ font-size:20px;
 font-weight:bold;
 }
 
-/* POPUP MODERN */
+/* SIDEBAR */
+
+.sidebar{
+
+position:fixed;
+
+right:-260px;
+top:0;
+
+width:260px;
+height:100%;
+
+background:#141c33;
+
+padding:25px;
+
+transition:0.35s;
+
+z-index:999;
+
+box-shadow:-10px 0 30px rgba(0,0,0,0.6);
+
+}
+
+.sidebar.active{
+right:0;
+}
+
+.sidebar h2{
+margin-top:0;
+}
+
+.sidebar button{
+
+width:100%;
+
+padding:12px;
+
+margin:10px 0;
+
+border:none;
+
+border-radius:8px;
+
+background:linear-gradient(45deg,#2563eb,#3b82f6);
+
+color:white;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:0.25s;
+
+}
+
+.sidebar button:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 5px 15px rgba(0,0,0,0.4);
+
+}
+
+/* POPUP */
 
 .popup{
+
 display:none;
 
 position:fixed;
+
 top:0;
 left:0;
 
@@ -175,21 +175,19 @@ height:100%;
 
 background:rgba(0,0,0,0.6);
 
-backdrop-filter:blur(5px);
+backdrop-filter:blur(4px);
+
+z-index:2000;
 
 }
 
 .popupBox{
 
-background:rgba(255,255,255,0.1);
-
-backdrop-filter:blur(12px);
-
-color:white;
+background:#182548;
 
 padding:25px;
 
-width:350px;
+width:340px;
 
 margin:120px auto;
 
@@ -203,13 +201,17 @@ box-shadow:0 10px 30px rgba(0,0,0,0.5);
 .popupBox textarea{
 
 width:100%;
+
 padding:10px;
+
 margin:8px 0;
 
 border:none;
+
 border-radius:6px;
 
-background:rgba(255,255,255,0.2);
+background:#0f1833;
+
 color:white;
 
 }
@@ -217,75 +219,17 @@ color:white;
 .popupBox button{
 
 padding:10px 15px;
+
 margin-top:10px;
 
 border:none;
+
 border-radius:6px;
 
 background:#2563eb;
+
 color:white;
 
 cursor:pointer;
-
-}
-
-body{
-margin:0;
-font-family:sans-serif;
-background:linear-gradient(135deg,#0b1b3a,#09122b);
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-}
-
-.loginBox{
-
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(12px);
-
-padding:40px;
-border-radius:14px;
-
-width:380px;
-
-box-shadow:0 10px 30px rgba(0,0,0,0.6);
-}
-
-.loginBox h1{
-margin-top:0;
-}
-
-.loginBox select,
-.loginBox input{
-
-width:100%;
-padding:10px;
-margin-top:10px;
-
-border:none;
-border-radius:6px;
-
-background:rgba(255,255,255,0.15);
-color:white;
-
-}
-
-.loginBox button{
-
-width:100%;
-padding:12px;
-
-margin-top:10px;
-
-border:none;
-border-radius:6px;
-
-background:#2563eb;
-color:white;
-
-cursor:pointer;
-font-weight:bold;
 
 }
