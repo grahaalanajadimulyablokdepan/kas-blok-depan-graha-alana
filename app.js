@@ -1,5 +1,3 @@
-let db = firebase.firestore()
-
 let blokSelect = document.getElementById("blok")
 let rumahSelect = document.getElementById("rumah")
 
