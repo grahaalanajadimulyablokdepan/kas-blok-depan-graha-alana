@@ -1,7 +1,13 @@
+/* =========================
+   BLOK & NOMOR RUMAH
+========================= */
+
 let blokSelect = document.getElementById("blok")
 let rumahSelect = document.getElementById("rumah")
 
+if(blokSelect){
 blokSelect.addEventListener("change", generateRumah)
+}
 
 function generateRumah(){
 
@@ -33,6 +39,10 @@ rumahSelect.appendChild(opt)
 
 }
 
+/* =========================
+   LOGIN WARGA
+========================= */
+
 function login(){
 
 let blok=document.getElementById("blok").value
@@ -60,26 +70,9 @@ alert("Password salah (1-8)")
 
 }
 
-function loginAdmin(){
-
-localStorage.clear()
-
-let username = prompt("Username Admin")
-let password = prompt("Password Admin")
-
-if(username === "admin" && password === "12345"){
-
-localStorage.setItem("role","admin")
-
-location.href="dashboard.html"
-
-}else{
-
-alert("Login admin gagal")
-
-}
-
-}
+/* =========================
+   LOGIN ADMIN
+========================= */
 
 function loginAdmin(){
 
@@ -101,6 +94,10 @@ alert("Login admin gagal")
 }
 
 }
+
+/* =========================
+   DASHBOARD LOAD
+========================= */
 
 function loadDashboard(){
 
@@ -110,13 +107,19 @@ if(role!="admin"){
 
 let adminMenu=document.getElementById("adminMenu")
 
-if(adminMenu) adminMenu.style.display="none"
+if(adminMenu){
+adminMenu.style.display="none"
+}
 
 }
 
 hitungKas()
 
 }
+
+/* =========================
+   HITUNG KAS
+========================= */
 
 function hitungKas(){
 
@@ -126,9 +129,7 @@ let totalKeluar=0
 db.collection("iuran").get().then(snap=>{
 
 snap.forEach(doc=>{
-
 totalIuran+=doc.data().jumlah
-
 })
 
 document.getElementById("totalIuran").innerText="Rp "+totalIuran.toLocaleString()
@@ -138,9 +139,7 @@ document.getElementById("totalIuran").innerText="Rp "+totalIuran.toLocaleString(
 db.collection("pengeluaran").get().then(snap=>{
 
 snap.forEach(doc=>{
-
 totalKeluar+=doc.data().jumlah
-
 })
 
 document.getElementById("totalKeluar").innerText="Rp "+totalKeluar.toLocaleString()
@@ -153,33 +152,54 @@ document.getElementById("totalKas").innerText="Rp "+kas.toLocaleString()
 
 }
 
+/* =========================
+   LOGOUT
+========================= */
+
 function logout(){
 
 localStorage.clear()
-
 location.href="index.html"
 
 }
 
+/* =========================
+   SIDEBAR MENU
+========================= */
+
 function toggleMenu(){
 
-let menu=document.getElementById("sideMenu")
+let menu=document.getElementById("sidebar")
 
-menu.classList.toggle("show")
+if(menu){
+menu.classList.toggle("active")
+}
 
 }
+
+/* =========================
+   POPUP
+========================= */
 
 function showPopup(id){
 
-document.getElementById(id).style.display="flex"
+document.getElementById(id).style.display="block"
 
 }
 
-function closePopup(id){
+function closePopup(){
 
-document.getElementById(id).style.display="none"
+let popups=document.querySelectorAll(".popup")
+
+popups.forEach(p=>{
+p.style.display="none"
+})
 
 }
+
+/* =========================
+   INPUT IURAN
+========================= */
 
 function simpanIuran(){
 
@@ -198,11 +218,14 @@ tanggal:new Date()
 
 alert("Iuran tersimpan")
 
-closePopup("popupIuran")
-
+closePopup()
 hitungKas()
 
 }
+
+/* =========================
+   INPUT PENGELUARAN
+========================= */
 
 function simpanKeluar(){
 
@@ -219,11 +242,14 @@ tanggal:new Date()
 
 alert("Pengeluaran tersimpan")
 
-closePopup("popupKeluar")
-
+closePopup()
 hitungKas()
 
 }
+
+/* =========================
+   KOMPLAIN
+========================= */
 
 function kirimKomplain(){
 
@@ -243,14 +269,18 @@ tanggal:new Date()
 
 alert("Komplain terkirim")
 
-closePopup("popupKomplain")
+closePopup()
 
 }
 
+/* =========================
+   LOAD KOMPLAIN
+========================= */
+
 function loadKomplain(){
 
-db.collection("komplain").orderBy("tanggal","desc")
-
+db.collection("komplain")
+.orderBy("tanggal","desc")
 .onSnapshot(snapshot=>{
 
 let html=""
@@ -262,11 +292,8 @@ let data=doc.data()
 html+=`
 
 <div class="komplainItem">
-
 <b>${data.blok}-${data.rumah}</b>
-
 <p>${data.pesan}</p>
-
 </div>
 
 `
@@ -278,6 +305,10 @@ document.getElementById("listKomplain").innerHTML=html
 })
 
 }
+
+/* =========================
+   EXPORT CSV
+========================= */
 
 function exportExcel(){
 
@@ -298,7 +329,6 @@ let blob=new Blob([csv])
 let a=document.createElement("a")
 
 a.href=URL.createObjectURL(blob)
-
 a.download="data_iuran.csv"
 
 a.click()
@@ -307,29 +337,9 @@ a.click()
 
 }
 
-window.generateRumah = generateRumah
-
-function toggleMenu(){
-
-let menu=document.getElementById("sidebar")
-
-menu.classList.toggle("active")
-
-}
-
-function showPopup(id){
-
-document.getElementById(id).style.display="block"
-
-}
-
-function closePopup(){
-
-let popups=document.querySelectorAll(".popup")
-
-popups.forEach(p=>p.style.display="none")
-
-}
+/* =========================
+   ROLE CHECK
+========================= */
 
 function cekRole(){
 
@@ -337,8 +347,11 @@ let role = localStorage.getItem("role")
 
 if(role !== "admin"){
 
-document.getElementById("btnIuran").style.display="none"
-document.getElementById("btnKeluar").style.display="none"
+let btnIuran=document.getElementById("btnIuran")
+let btnKeluar=document.getElementById("btnKeluar")
+
+if(btnIuran) btnIuran.style.display="none"
+if(btnKeluar) btnKeluar.style.display="none"
 
 }
 
