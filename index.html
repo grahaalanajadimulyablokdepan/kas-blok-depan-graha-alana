@@ -3,8 +3,9 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>Sistem Kas Graha Alana</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login Kas Graha Alana</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -19,38 +20,47 @@
 
 <div class="loginBox">
 
-<h1>Sistem Kas Graha Alana</h1>
+<h1>KAS BLOK DEPAN ALANA</h1>
 
-<p>
-Selamat datang di sistem transparansi kas lingkungan  
-Graha Alana Blok Depan.
-</p>
+<p>Sistem Transparansi Kas Warga</p>
 
 <select id="blok">
 <option value="">Pilih Blok</option>
-
-<option value="A1">A1</option>
-<option value="A2">A2</option>
-<option value="A3">A3</option>
-<option value="B1">B1</option>
-<option value="B2">B2</option>
-<option value="B3">B3</option>
-
+<option>A1</option>
+<option>A2</option>
+<option>A3</option>
+<option>B1</option>
+<option>B2</option>
+<option>B3</option>
 </select>
-
 
 <select id="rumah">
-<option value="">Pilih Nomor Rumah</option>
+<option value="">Nomor Rumah</option>
 </select>
 
-<input type="password" id="password" placeholder="Password">
+<input type="password" id="password" placeholder="Password (1-8)">
 
-<button onclick="login()">Masuk Sistem</button>
-
-<button onclick="loginAdmin()">Login Admin</button>
+<button onclick="loginWarga()">Login Warga</button>
+<button onclick="openAdmin()">Login Admin</button>
 
 </div>
 
+
+<div id="adminPopup" class="popup">
+
+<div class="popupBox">
+
+<h2>Login Admin</h2>
+
+<input id="adminUser" placeholder="Username">
+<input id="adminPass" placeholder="Password" type="password">
+
+<button onclick="loginAdmin()">Masuk</button>
+<button onclick="closePopup()">Tutup</button>
+
+</div>
+
+</div>
 
 <script src="app.js"></script>
 
