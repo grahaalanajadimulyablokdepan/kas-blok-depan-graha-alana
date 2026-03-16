@@ -1,34 +1,48 @@
 const db = firebase.firestore()
 
-/* =========================
-   GENERATE NOMOR RUMAH
-========================= */
+/* ======================
+   DATA BLOK
+====================== */
 
 const blokData = {
+
 A1:18,
 A2:24,
 A3:10,
 B1:20,
 B2:20,
 B3:20
+
 }
+
+/* ======================
+   LOAD PAGE
+====================== */
 
 document.addEventListener("DOMContentLoaded",()=>{
 
-let blok=document.getElementById("blok")
+const blok=document.getElementById("blok")
 
 if(blok){
+
 blok.addEventListener("change",generateRumah)
+
 }
 
 })
 
+/* ======================
+   GENERATE RUMAH
+====================== */
+
 function generateRumah(){
 
-let blok=document.getElementById("blok").value
-let rumah=document.getElementById("rumah")
+const blok=document.getElementById("blok").value
+const rumah=document.getElementById("rumah")
 
-rumah.innerHTML=`<option value="">Nomor Rumah</option>`
+if(!rumah) return
+
+rumah.innerHTML='<option value="">Nomor Rumah</option>'
 
 if(!blok) return
 
@@ -47,20 +61,28 @@ rumah.appendChild(opt)
 
 }
 
-
-/* =========================
+/* ======================
    LOGIN WARGA
-========================= */
+====================== */
 
 function loginWarga(){
 
-let blok=document.getElementById("blok").value
-let rumah=document.getElementById("rumah").value
-let pass=document.getElementById("password").value
+const blok=document.getElementById("blok").value
+const rumah=document.getElementById("rumah").value
+const pass=document.getElementById("password").value
 
-if(!blok || !rumah){
-alert("Pilih blok dan nomor rumah")
+if(!blok){
+
+alert("Pilih blok dulu")
 return
+
+}
+
+if(!rumah){
+
+alert("Pilih nomor rumah")
+return
+
 }
 
 if(pass>=1 && pass<=8){
@@ -73,47 +95,58 @@ location.href="dashboard.html"
 
 }else{
 
-alert("Password salah (1-8)")
+alert("Password warga hanya 1 sampai 8")
 
 }
 
 }
 
-
-/* =========================
-   LOGIN ADMIN
-========================= */
+/* ======================
+   ADMIN LOGIN
+====================== */
 
 function openAdmin(){
-document.getElementById("adminPopup").style.display="flex"
+
+const popup=document.getElementById("adminPopup")
+
+if(popup){
+popup.style.display="flex"
+}
+
 }
 
 function closePopup(){
-document.querySelectorAll(".popup").forEach(p=>p.style.display="none")
+
+document.querySelectorAll(".popup").forEach(p=>{
+
+p.style.display="none"
+
+})
+
 }
 
 function loginAdmin(){
 
-let user=document.getElementById("adminUser").value
-let pass=document.getElementById("adminPass").value
+const user=document.getElementById("adminUser").value
+const pass=document.getElementById("adminPass").value
 
 if(user==="admin" && pass==="12345"){
 
 localStorage.setItem("role","admin")
+
 location.href="dashboard.html"
 
 }else{
 
-alert("Login admin gagal")
+alert("Username atau password admin salah")
 
 }
 
 }
 
-
-/* =========================
-   DASHBOARD
-========================= */
+/* ======================
+   DASHBOARD INIT
+====================== */
 
 function initDashboard(){
 
@@ -123,42 +156,43 @@ loadTabel()
 
 }
 
-
-/* =========================
-   ROLE CHECK
-========================= */
+/* ======================
+   CEK ROLE
+====================== */
 
 function cekRole(){
 
-let role=localStorage.getItem("role")
+const role=localStorage.getItem("role")
 
-if(role!=="admin"){
+const btn=document.getElementById("btnIuran")
 
-let btn=document.getElementById("btnIuran")
+if(role!=="admin" && btn){
 
-if(btn) btn.style.display="none"
-
-}
+btn.style.display="none"
 
 }
 
+}
 
-/* =========================
+/* ======================
    SIDEBAR
-========================= */
+====================== */
 
 function toggleMenu(){
 
-let sidebar=document.getElementById("sidebar")
+const sidebar=document.getElementById("sidebar")
+
+if(sidebar){
 
 sidebar.classList.toggle("active")
 
 }
 
+}
 
-/* =========================
-   LOAD TOTAL KAS
-========================= */
+/* ======================
+   TOTAL KAS
+====================== */
 
 function loadKas(){
 
@@ -168,37 +202,51 @@ let totalKeluar=0
 db.collection("iuran").get().then(snap=>{
 
 snap.forEach(doc=>{
+
 totalIuran+=doc.data().jumlah
+
 })
 
-document.getElementById("totalIuran").innerText="Rp "+totalIuran.toLocaleString()
+const el=document.getElementById("totalIuran")
+
+if(el) el.innerText="Rp "+totalIuran.toLocaleString()
 
 })
 
 db.collection("pengeluaran").get().then(snap=>{
 
 snap.forEach(doc=>{
+
 totalKeluar+=doc.data().jumlah
+
 })
 
-document.getElementById("totalKeluar").innerText="Rp "+totalKeluar.toLocaleString()
+const keluar=document.getElementById("totalKeluar")
+const kas=document.getElementById("totalKas")
 
-let kas=totalIuran-totalKeluar
+if(keluar){
 
-document.getElementById("totalKas").innerText="Rp "+kas.toLocaleString()
+keluar.innerText="Rp "+totalKeluar.toLocaleString()
+
+}
+
+if(kas){
+
+kas.innerText="Rp "+(totalIuran-totalKeluar).toLocaleString()
+
+}
 
 })
 
 }
 
-
-/* =========================
-   LOAD TABEL IURAN
-========================= */
+/* ======================
+   LOAD TABEL
+====================== */
 
 function loadTabel(){
 
-let tabel=document.getElementById("tabelIuran")
+const tabel=document.getElementById("tabelIuran")
 
 if(!tabel) return
 
@@ -208,19 +256,22 @@ let html=""
 
 snap.forEach(doc=>{
 
-let d=doc.data()
+const d=doc.data()
 
 html+=`
 
 <tr>
+
 <td>${d.blok}</td>
 <td>${d.rumah}</td>
 <td>Rp ${d.jumlah}</td>
+
 <td>
 
 <button onclick="hapusIuran('${doc.id}')">Hapus</button>
 
 </td>
+
 </tr>
 
 `
@@ -233,16 +284,15 @@ tabel.innerHTML=html
 
 }
 
-
-/* =========================
+/* ======================
    SIMPAN IURAN
-========================= */
+====================== */
 
 function simpanIuran(){
 
-let blok=document.getElementById("iuranBlok").value
-let rumah=document.getElementById("iuranRumah").value
-let jumlah=Number(document.getElementById("jumlahIuran").value)
+const blok=document.getElementById("iuranBlok").value
+const rumah=document.getElementById("iuranRumah").value
+const jumlah=Number(document.getElementById("jumlahIuran").value)
 
 db.collection("iuran").add({
 
@@ -257,10 +307,9 @@ closePopup()
 
 }
 
-
-/* =========================
+/* ======================
    HAPUS
-========================= */
+====================== */
 
 function hapusIuran(id){
 
@@ -268,10 +317,9 @@ db.collection("iuran").doc(id).delete()
 
 }
 
-
-/* =========================
+/* ======================
    EXPORT CSV
-========================= */
+====================== */
 
 function exportExcel(){
 
@@ -281,7 +329,7 @@ let csv="Blok,Rumah,Jumlah\n"
 
 snapshot.forEach(doc=>{
 
-let d=doc.data()
+const d=doc.data()
 
 csv+=`${d.blok},${d.rumah},${d.jumlah}\n`
 
@@ -292,7 +340,6 @@ let blob=new Blob([csv])
 let a=document.createElement("a")
 
 a.href=URL.createObjectURL(blob)
-
 a.download="data_kas.csv"
 
 a.click()
@@ -301,10 +348,9 @@ a.click()
 
 }
 
-
-/* =========================
+/* ======================
    LOGOUT
-========================= */
+====================== */
 
 function logout(){
 
