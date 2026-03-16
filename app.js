@@ -33,12 +33,39 @@ rumahSelect.appendChild(opt)
 
 }
 
+function login(){
+
+let blok=document.getElementById("blok").value
+let rumah=document.getElementById("rumah").value
+let pass=document.getElementById("password").value
+
+if(blok=="" || rumah==""){
+alert("Pilih blok dan nomor rumah")
+return
+}
+
+if(pass>=1 && pass<=8){
+
+localStorage.setItem("userBlok",blok)
+localStorage.setItem("userRumah",rumah)
+localStorage.setItem("role","warga")
+
+location.href="dashboard.html"
+
+}else{
+
+alert("Password salah (1-8)")
+
+}
+
+}
+
 function loginAdmin(){
+
+localStorage.clear()
 
 let username = prompt("Username Admin")
 let password = prompt("Password Admin")
-
-console.log(username,password)
 
 if(username === "admin" && password === "12345"){
 
@@ -280,7 +307,6 @@ a.click()
 
 }
 
-document.getElementById("blok").addEventListener("change", generateRumah)
 window.generateRumah = generateRumah
 
 function toggleMenu(){
