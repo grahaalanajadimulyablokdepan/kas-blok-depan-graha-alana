@@ -57,9 +57,10 @@ alert("Password salah")
 
 function loginAdmin(){
 
-let pass=document.getElementById("password").value
+let username = prompt("Username Admin")
+let password = prompt("Password Admin")
 
-if(pass=="12345"){
+if(username === "admin" && password === "12345"){
 
 localStorage.setItem("role","admin")
 
@@ -67,7 +68,7 @@ location.href="dashboard.html"
 
 }else{
 
-alert("Password admin salah")
+alert("Login admin gagal")
 
 }
 
