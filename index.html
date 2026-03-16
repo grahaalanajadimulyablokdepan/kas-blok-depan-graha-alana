@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <meta charset="UTF-8">
@@ -21,24 +22,28 @@
 <div class="loginBox">
 
 <h1>KAS BLOK DEPAN ALANA</h1>
-
 <p>Sistem Transparansi Kas Warga</p>
 
 <select id="blok">
 <option value="">Pilih Blok</option>
-<option>A1</option>
-<option>A2</option>
-<option>A3</option>
-<option>B1</option>
-<option>B2</option>
-<option>B3</option>
+<option value="A1">A1</option>
+<option value="A2">A2</option>
+<option value="A3">A3</option>
+<option value="B1">B1</option>
+<option value="B2">B2</option>
+<option value="B3">B3</option>
 </select>
 
 <select id="rumah">
 <option value="">Nomor Rumah</option>
 </select>
 
-<input type="password" id="password" placeholder="Password (1-8)">
+<input
+type="password"
+id="password"
+placeholder="Password (1-8)"
+onkeypress="if(event.key==='Enter'){loginWarga()}"
+>
 
 <button onclick="loginWarga()">Login Warga</button>
 <button onclick="openAdmin()">Login Admin</button>
@@ -53,7 +58,13 @@
 <h2>Login Admin</h2>
 
 <input id="adminUser" placeholder="Username">
-<input id="adminPass" placeholder="Password" type="password">
+
+<input
+id="adminPass"
+type="password"
+placeholder="Password"
+onkeypress="if(event.key==='Enter'){loginAdmin()}"
+>
 
 <button onclick="loginAdmin()">Masuk</button>
 <button onclick="closePopup()">Tutup</button>
