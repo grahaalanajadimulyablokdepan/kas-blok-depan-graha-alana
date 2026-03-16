@@ -57,6 +57,8 @@ alert("Password salah")
 
 function loginAdmin(){
 
+localStorage.clear()
+
 let username = prompt("Username Admin")
 let password = prompt("Password Admin")
 
