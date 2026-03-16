@@ -1,4 +1,10 @@
-const blokData={
+const db = firebase.firestore()
+
+/* =========================
+   GENERATE NOMOR RUMAH
+========================= */
+
+const blokData = {
 A1:18,
 A2:24,
 A3:10,
@@ -7,14 +13,55 @@ B2:20,
 B3:20
 }
 
+document.addEventListener("DOMContentLoaded",()=>{
 
-/* LOGIN WARGA */
+let blok=document.getElementById("blok")
+
+if(blok){
+blok.addEventListener("change",generateRumah)
+}
+
+})
+
+function generateRumah(){
+
+let blok=document.getElementById("blok").value
+let rumah=document.getElementById("rumah")
+
+rumah.innerHTML=`<option value="">Nomor Rumah</option>`
+
+if(!blok) return
+
+let jumlah=blokData[blok]
+
+for(let i=1;i<=jumlah;i++){
+
+let opt=document.createElement("option")
+
+opt.value=i
+opt.text="Rumah "+i
+
+rumah.appendChild(opt)
+
+}
+
+}
+
+
+/* =========================
+   LOGIN WARGA
+========================= */
 
 function loginWarga(){
 
 let blok=document.getElementById("blok").value
 let rumah=document.getElementById("rumah").value
 let pass=document.getElementById("password").value
+
+if(!blok || !rumah){
+alert("Pilih blok dan nomor rumah")
+return
+}
 
 if(pass>=1 && pass<=8){
 
@@ -24,12 +71,18 @@ localStorage.setItem("rumah",rumah)
 
 location.href="dashboard.html"
 
-}
+}else{
+
+alert("Password salah (1-8)")
 
 }
 
+}
 
-/* ADMIN */
+
+/* =========================
+   LOGIN ADMIN
+========================= */
 
 function openAdmin(){
 document.getElementById("adminPopup").style.display="flex"
@@ -41,31 +94,39 @@ document.querySelectorAll(".popup").forEach(p=>p.style.display="none")
 
 function loginAdmin(){
 
-let u=document.getElementById("adminUser").value
-let p=document.getElementById("adminPass").value
+let user=document.getElementById("adminUser").value
+let pass=document.getElementById("adminPass").value
 
-if(u==="admin" && p==="12345"){
+if(user==="admin" && pass==="12345"){
 
 localStorage.setItem("role","admin")
 location.href="dashboard.html"
 
-}
+}else{
+
+alert("Login admin gagal")
 
 }
 
+}
 
-/* DASHBOARD */
+
+/* =========================
+   DASHBOARD
+========================= */
 
 function initDashboard(){
 
 cekRole()
-
 loadKas()
-
 loadTabel()
 
 }
 
+
+/* =========================
+   ROLE CHECK
+========================= */
 
 function cekRole(){
 
@@ -73,21 +134,31 @@ let role=localStorage.getItem("role")
 
 if(role!=="admin"){
 
-document.getElementById("btnIuran").style.display="none"
+let btn=document.getElementById("btnIuran")
+
+if(btn) btn.style.display="none"
 
 }
 
 }
 
 
-/* SIDEBAR */
+/* =========================
+   SIDEBAR
+========================= */
 
 function toggleMenu(){
-document.getElementById("sidebar").classList.toggle("active")
+
+let sidebar=document.getElementById("sidebar")
+
+sidebar.classList.toggle("active")
+
 }
 
 
-/* KAS */
+/* =========================
+   LOAD TOTAL KAS
+========================= */
 
 function loadKas(){
 
@@ -112,16 +183,24 @@ totalKeluar+=doc.data().jumlah
 
 document.getElementById("totalKeluar").innerText="Rp "+totalKeluar.toLocaleString()
 
-document.getElementById("totalKas").innerText="Rp "+(totalIuran-totalKeluar).toLocaleString()
+let kas=totalIuran-totalKeluar
+
+document.getElementById("totalKas").innerText="Rp "+kas.toLocaleString()
 
 })
 
 }
 
 
-/* TABEL */
+/* =========================
+   LOAD TABEL IURAN
+========================= */
 
 function loadTabel(){
+
+let tabel=document.getElementById("tabelIuran")
+
+if(!tabel) return
 
 db.collection("iuran").onSnapshot(snap=>{
 
@@ -136,28 +215,52 @@ html+=`
 <tr>
 <td>${d.blok}</td>
 <td>${d.rumah}</td>
-<td>${d.jumlah}</td>
-
+<td>Rp ${d.jumlah}</td>
 <td>
 
 <button onclick="hapusIuran('${doc.id}')">Hapus</button>
 
 </td>
-
 </tr>
 
 `
 
 })
 
-document.getElementById("tabelIuran").innerHTML=html
+tabel.innerHTML=html
 
 })
 
 }
 
 
-/* HAPUS */
+/* =========================
+   SIMPAN IURAN
+========================= */
+
+function simpanIuran(){
+
+let blok=document.getElementById("iuranBlok").value
+let rumah=document.getElementById("iuranRumah").value
+let jumlah=Number(document.getElementById("jumlahIuran").value)
+
+db.collection("iuran").add({
+
+blok,
+rumah,
+jumlah,
+tanggal:new Date()
+
+})
+
+closePopup()
+
+}
+
+
+/* =========================
+   HAPUS
+========================= */
 
 function hapusIuran(id){
 
@@ -166,26 +269,15 @@ db.collection("iuran").doc(id).delete()
 }
 
 
-/* INPUT */
-
-function simpanIuran(){
-
-let blok=document.getElementById("iuranBlok").value
-let rumah=document.getElementById("iuranRumah").value
-let jumlah=Number(document.getElementById("jumlahIuran").value)
-
-db.collection("iuran").add({blok,rumah,jumlah})
-
-}
-
-
-/* EXPORT */
+/* =========================
+   EXPORT CSV
+========================= */
 
 function exportExcel(){
 
 db.collection("iuran").get().then(snapshot=>{
 
-let csv="blok,rumah,jumlah\n"
+let csv="Blok,Rumah,Jumlah\n"
 
 snapshot.forEach(doc=>{
 
@@ -201,7 +293,7 @@ let a=document.createElement("a")
 
 a.href=URL.createObjectURL(blob)
 
-a.download="kas.csv"
+a.download="data_kas.csv"
 
 a.click()
 
@@ -209,6 +301,10 @@ a.click()
 
 }
 
+
+/* =========================
+   LOGOUT
+========================= */
 
 function logout(){
 
