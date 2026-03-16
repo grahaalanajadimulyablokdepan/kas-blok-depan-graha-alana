@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Dashboard Kas</title>
 
 <link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
@@ -16,55 +18,33 @@
 
 </head>
 
+<body onload="initDashboard()">
 
-<body onload="loadDashboard(); cekRole();">
+<header class="header">
 
+<div class="logoArea">
 
-<!-- HEADER -->
-
-<div class="header">
-
-<div class="logoBox">
-<img src="logo.png">
 <span>KAS BLOK DEPAN ALANA</span>
+
 </div>
 
 <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-</div>
+</header>
 
 
+<div id="sidebar" class="sidebar">
 
-<!-- SIDEBAR -->
+<button id="btnIuran" onclick="openPopup('popupIuran')">Input Iuran</button>
 
-<div class="sidebar" id="sidebar">
+<button id="btnKeluar" onclick="openPopup('popupKeluar')">Input Pengeluaran</button>
 
-<h2>Menu Kas</h2>
+<button onclick="exportExcel()">Export Excel</button>
 
-<p style="font-size:13px;opacity:0.7;margin-bottom:20px">
-Sistem transparansi kas warga  
-Graha Alana Blok Depan
-</p>
-
-<button id="btnIuran" onclick="showPopup('iuranPopup')">💰 Input Iuran</button>
-
-<button id="btnKeluar" onclick="showPopup('keluarPopup')">📤 Input Pengeluaran</button>
-
-<button onclick="showPopup('komplainPopup')">📢 Kirim Komplain</button>
-
-<button onclick="showPopup('kontakPopup')">📞 Kontak Pengurus</button>
-
-<button onclick="exportExcel()">📊 Export Excel</button>
-
-<button onclick="logout()">🚪 Logout</button>
+<button onclick="logout()">Logout</button>
 
 </div>
 
-
-
-<!-- MAIN DASHBOARD -->
-
-<div class="mainContainer">
 
 <div class="dashboard">
 
@@ -85,124 +65,65 @@ Graha Alana Blok Depan
 
 </div>
 
+
+<div class="chartBox">
+<canvas id="chartKas"></canvas>
 </div>
 
 
+<div class="tableBox">
 
-<!-- POPUP IURAN -->
+<h2>Data Iuran</h2>
 
-<div class="popup" id="iuranPopup">
+<table>
 
+<thead>
+<tr>
+<th>Blok</th>
+<th>Rumah</th>
+<th>Jumlah</th>
+<th>Aksi</th>
+</tr>
+</thead>
+
+<tbody id="tabelIuran"></tbody>
+
+</table>
+
+</div>
+
+
+<div id="popupIuran" class="popup">
 <div class="popupBox">
 
 <h3>Input Iuran</h3>
 
-<input id="blokInput" placeholder="Blok">
-
-<input id="rumahInput" placeholder="Nomor Rumah">
-
-<input id="jumlahInput" placeholder="Jumlah">
+<input id="iuranBlok">
+<input id="iuranRumah">
+<input id="jumlahIuran">
 
 <button onclick="simpanIuran()">Simpan</button>
-
 <button onclick="closePopup()">Tutup</button>
 
 </div>
-
 </div>
 
 
-
-<!-- POPUP PENGELUARAN -->
-
-<div class="popup" id="keluarPopup">
-
+<div id="popupKeluar" class="popup">
 <div class="popupBox">
 
 <h3>Input Pengeluaran</h3>
 
-<input id="ketInput" placeholder="Keterangan">
-
-<input id="jumlahKeluar" placeholder="Jumlah">
+<input id="ketKeluar">
+<input id="jumlahKeluar">
 
 <button onclick="simpanKeluar()">Simpan</button>
-
 <button onclick="closePopup()">Tutup</button>
 
 </div>
-
 </div>
-
-
-
-<!-- POPUP KOMPLAIN -->
-
-<div class="popup" id="komplainPopup">
-
-<div class="popupBox">
-
-<h3>Kirim Komplain</h3>
-
-<textarea id="isiKomplain"></textarea>
-
-<button onclick="kirimKomplain()">Kirim</button>
-
-<button onclick="closePopup()">Tutup</button>
-
-</div>
-
-</div>
-
-
-
-<!-- POPUP KONTAK -->
-
-<div class="popup" id="kontakPopup">
-
-<div class="popupBox">
-
-<h3>Kontak Pengurus</h3>
-
-<p>Ketua : 08xxxxxxxx</p>
-<p>Bendahara : 08xxxxxxxx</p>
-
-<button onclick="closePopup()">Tutup</button>
-
-</div>
-
-</div>
-
-
-
-<script>
-
-function toggleMenu(){
-
-let menu = document.getElementById("sidebar")
-
-menu.classList.toggle("active")
-
-}
-
-function showPopup(id){
-
-document.getElementById(id).style.display="block"
-
-}
-
-function closePopup(){
-
-let pop = document.querySelectorAll(".popup")
-
-pop.forEach(p => p.style.display="none")
-
-}
-
-</script>
-
 
 <script src="app.js"></script>
-
 
 </body>
 </html>
